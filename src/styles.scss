@@ -1,1 +1,74 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import url('./assets/open-iconic/font/css/open-iconic-bootstrap.min.css');
+
+:root{
+  --color-blue: #2196f3;
+  --color-darkblue: #1769aa;
+  --color-red: #a12059;
+  --color-darkred: #70163e;
+  --color-green: #009688;
+  --color-darkgreen: #03766b;
+  --color-dark: #33334c;
+}
+.main{
+  position: relative;
+  height: 100vh;
+  background-color: #fff;
+}
+
+.workspace{
+  position: absolute;
+  top: 3.5rem;
+  left: 250px;
+  height: calc(100vh - 3.5rem);
+  width: calc(100vw - 250px);
+
+  .container-fluid{
+    height: 100%;
+  }
+
+  .row{
+    height: 100%;
+  }
+}
+
+.sidebar{
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 250px;
+  background-color: var(--color-dark);
+}
+
+.top-row-brand{
+  display: flex;
+  height: 3.5rem;
+  background-color: var(--color-darkblue);
+
+  .navbar{
+    justify-content: center;
+  }
+}
+
+.top-row {
+  margin-left: 250px;
+  left: 250px;
+  height: 3.5rem;
+  background-color: var(--color-blue);
+}
+
+.navbar-brand {
+  font-size: 1.1rem;
+}
+
+
+
+
+
+
+
+
+
+
+

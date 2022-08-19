@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+
+import {TopbarComponent} from "./topbar/topbar.component";
+import {ITitleComponent} from "./shared/Interfaces/ITitleComponent";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'TLWebAppAngular';
+  title = 'Transport si Logistica';
+  constructor() { }
+
+  onRouteActivate(component: ITitleComponent) {
+    TopbarComponent.title = component.getTitle();
+  }
 }
