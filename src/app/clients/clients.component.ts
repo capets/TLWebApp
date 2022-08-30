@@ -13,7 +13,7 @@ export class ClientsComponent implements OnInit, ITitleComponent {
   ngOnInit(): void {
   }
 
-  getTitle(): string {
+  get Title(): string {
     return "Clienti";
   }
 

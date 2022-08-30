@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit, ITitleComponent {
   ngOnInit(): void {
   }
 
-  getTitle(): string {
+  get Title(): string {
     return "";
   }
 

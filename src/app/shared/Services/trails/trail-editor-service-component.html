@@ -1,0 +1,170 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{model.id > 0 ? 'Editeaza remorca' : 'Adauga remorca'}}</h4>
+</div>
+<div class="modal-body">
+  <div class="form">
+    <div class="container">
+      <div class="row mb-2">
+        <div class="col">
+          <label for="brand" class="form-label">Marca</label>
+          <input id="brand" class="form-control" [(ngModel)]="model.brand"/>
+        </div>
+        <div class="col">
+          <label for="plate" class="form-label">Numar de inmatriculare</label>
+          <input id="plate" class="form-control" [(ngModel)]="model.plateNumber"/>
+        </div>
+        <div class="col">
+          <label for="vin" class="form-label">VIN</label>
+          <input id="vin" class="form-control" [(ngModel)]="model.vin"/>
+        </div>
+        <div class="col">
+          <label for="category" class="form-label">Categorie</label>
+          <select id="category" class="form-control form-select"
+                  [(ngModel)]="model.trailCategoryId">
+            <option *ngFor="let category of categories"
+                    [ngValue]="category.id">{{category.name}}</option>
+          </select>
+        </div>
+        <div class="col">
+          <label for="type" class="form-label">Tip</label>
+          <select id="type" class="form-control form-select"
+                  [(ngModel)]="model.autoTypeId">
+            <option *ngFor="let autoType of autoTypes"
+                    [ngValue]="autoType.id">{{autoType.name}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row mb-2">
+        <div class="col">
+          <label for="length" class="form-label">Lungime</label>
+          <input #length id="length" class="form-control"
+                 [(ngModel)]="model.length"
+                 (focusin)="onFocusIn(length)"
+                 (focusout)="onFocusOut(length)"/>
+        </div>
+        <div class="col">
+          <label for="width" class="form-label">Latime</label>
+          <input #width id="width" class="form-control"
+                 [(ngModel)]="model.width"
+                 (focusin)="onFocusIn(width)"
+                 (focusout)="onFocusOut(width)"/>
+        </div>
+        <div class="col">
+          <label for="height" class="form-label">Inaltime</label>
+          <input #height id="height" class="form-control"
+                 [(ngModel)]="model.height"
+                 (focusin)="onFocusIn(height)"
+                 (focusout)="onFocusOut(height)"/>
+        </div>
+        <div class="col">
+          <label for="volume" class="form-label">Volum</label>
+          <input id="volume" class="form-control" readonly [value]="model.volume"/>
+        </div>
+      </div>
+
+      <div class="row mb-2">
+
+        <div class="col">
+          <label for="itpExp" class="form-label">Valabilitate ITP</label>
+          <div class="input-group">
+            <input type="text"
+                   id="itpExp" class="form-control"
+                   [ngClass]="getColor(model.itpExpDate)"
+                   placeholder="Data expirare"
+                   bsDatepicker
+                   [bsConfig]="pickerConfig.get()"
+                   [(ngModel)]="model.itpExpDate">
+          </div>
+        </div>
+
+        <div class="col">
+          <label for="certCemtExp" class="form-label">Valabilitate CEMT</label>
+          <div class="input-group">
+            <input type="text" id="certCemtExp"
+                   [ngClass]="getColor(model.certCemtExpDate)"
+                   placeholder="Data expirare"
+                   class="form-control"
+                   bsDatepicker
+                   [bsConfig]="pickerConfig.get()"
+                   [(ngModel)]="model.certCemtExpDate">
+          </div>
+        </div>
+
+        <div class="col">
+          <label for="certAgrExp" class="form-label">Valabilitate Agreriere</label>
+          <div class="input-group">
+            <input type="text" id="certAgrExp"
+                   [ngClass]="getColor(model.certAgrExpDate)"
+                   placeholder="Data expirare"
+                   class="form-control"
+                   bsDatepicker
+                   [bsConfig]="pickerConfig.get()"
+                   [(ngModel)]="model.certAgrExpDate">
+          </div>
+        </div>
+
+        <div class="col">
+          <label for="certRcaExp" class="form-label">Valabilitate Rca</label>
+          <div class="input-group">
+            <input type="text" id="certRcaExp"
+                   [ngClass]="getColor(model.certRcaExpDate)"
+                   placeholder="Data expirare"
+                   class="form-control"
+                   bsDatepicker
+                   [bsConfig]="pickerConfig.get()"
+                   [(ngModel)]="model.certRcaExpDate">
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-2">
+        <div class="col">
+          <label for="certCVerde" class="form-label">Valabiliate Carte Verde</label>
+          <div class="input-group">
+            <input type="text" id="certCVerde"
+                   [ngClass]="getColor(model.certCVerdeExpDate)"
+                   placeholder="Data expirare"
+                   class="form-control"
+                   bsDatepicker
+                   [bsConfig]="pickerConfig.get()"
+                   [(ngModel)]="model.certCVerdeExpDate">
+          </div>
+        </div>
+
+        <div class="col">
+          <label for="certCasco" class="form-label">Valabiliate Casco</label>
+          <div class="input-group">
+            <input type="text" id="certCasco"
+                   [ngClass]="getColor(model.certCascoExpDate)"
+                   placeholder="Data expirare"
+                   class="form-control"
+                   bsDatepicker
+                   [bsConfig]="pickerConfig.get()"
+                   [(ngModel)]="model.certCascoExpDate">
+          </div>
+        </div>
+
+        <div class="col">
+          <label for="certSting" class="form-label">Valabiliate Extinctor</label>
+          <div class="input-group">
+            <input type="text" id="certSting"
+                   [ngClass]="getColor(model.certStingExpDate)"
+                   placeholder="Data expirare"
+                   class="form-control"
+                   bsDatepicker
+                   [bsConfig]="pickerConfig.get()"
+                   [(ngModel)]="model.certStingExpDate">
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="confirmSubmit()">Salveaza</button>
+  <button type="button" class="btn btn-secondary" (click)="decline()">Anuleaza</button>
+</div>
+

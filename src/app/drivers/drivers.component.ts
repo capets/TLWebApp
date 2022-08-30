@@ -13,7 +13,7 @@ export class DriversComponent implements OnInit, ITitleComponent {
   ngOnInit(): void {
   }
 
-  getTitle(): string {
+  get Title(): string {
     return "Soferi";
   }
 

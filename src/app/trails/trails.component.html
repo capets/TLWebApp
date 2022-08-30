@@ -1,1 +1,74 @@
-<p>trails works!</p>
+<div class="row">
+  <div class="col-12">
+    <table class="table align-middle table-hover">
+      <thead class="table-light">
+      <tr>
+        <th>#</th>
+        <th>Marca</th>
+        <th>Numar</th>
+        <th>Vin</th>
+        <th>Certificat ITP</th>
+        <th>Certificat CEMT</th>
+        <th>Rca</th>
+        <th>Agreriere</th>
+        <th>Cartea Verde</th>
+        <th>Casco</th>
+        <th>Extinctor</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let trail of trails; let idx = index;"
+          (click)="onEditClick(trail)"
+          [ngClass]="trail.id == this.selectedTrailId ? 'active' : ''">
+        <th scope="row">{{idx + 1}}</th>
+        <td>{{trail.brand}}</td>
+        <td>{{trail.plateNumber}}</td>
+        <td>{{trail.vin}}</td>
+        <td [ngClass]="getCellColor(trail.itpExpDate)">{{trail.itpExpDate | date:'dd.MM.yyyy'}}</td>
+        <td [ngClass]="getCellColor(trail.certCemtExpDate)">{{trail.certCemtExpDate | date:'dd.MM.yyyy'}}</td>
+        <td [ngClass]="getCellColor(trail.certRcaExpDate)">{{trail.certRcaExpDate | date:'dd.MM.yyyy'}}</td>
+        <td [ngClass]="getCellColor(trail.certAgrExpDate)">{{trail.certAgrExpDate | date:'dd.MM.yyyy'}}</td>
+        <td [ngClass]="getCellColor(trail.certCVerdeExpDate)">{{trail.certCVerdeExpDate | date:'dd.MM.yyyy'}}</td>
+        <td [ngClass]="getCellColor(trail.certCascoExpDate)">{{trail.certCascoExpDate | date:'dd.MM.yyyy'}}</td>
+        <td [ngClass]="getCellColor(trail.certStingExpDate)">{{trail.certStingExpDate | date:'dd.MM.yyyy'}}</td>
+        <td class="col-1 text-center">
+          <button id="deleteButton" class="btn btn-danger" (click)="onDeleteClick(trail); $event.stopPropagation()">
+            <span class="oi oi-trash" aria-hidden="true"></span>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-primary" (click)="onAddClick()">Adauga</button>
+  </div>
+</div>
+
+
+<!--<ng-template #deleteDialog>-->
+<!--  <div class="modal-header">-->
+<!--    <h4 class="modal-title">{{dialogTitle}}</h4>-->
+<!--  </div>-->
+<!--  <div class="modal-body">-->
+<!--    <h5 class="alert alert-warning">-->
+<!--      Esti sigur ca doresti sa elimini remorca cu numarul {{trailsService.activeModel.plateNumber}}?-->
+<!--    </h5>-->
+<!--  </div>-->
+<!--  <div class="modal-footer">-->
+<!--    <button type="button" class="btn btn-secondary" (click)="decline()">Nu</button>-->
+<!--    <button type="button" class="btn btn-danger" (click)="confirmDelete()">Da</button>-->
+<!--  </div>-->
+<!--</ng-template>-->
+
+<!--<ng-template #editDialog>-->
+<!--  <div class="modal-header">-->
+<!--    <h4 class="modal-title">{{dialogTitle}}</h4>-->
+<!--  </div>-->
+<!--  <div class="modal-body">-->
+<!--    <app-trail-editor></app-trail-editor>-->
+<!--  </div>-->
+<!--  <div class="modal-footer">-->
+<!--    <button type="button" class="btn btn-primary" (click)="confirmSubmit()">Salveaza</button>-->
+<!--    <button type="button" class="btn btn-secondary" (click)="decline()">Anuleaza</button>-->
+<!--  </div>-->
+<!--</ng-template>-->

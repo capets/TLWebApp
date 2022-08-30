@@ -1,3 +1,3 @@
 export interface ITitleComponent{
-  getTitle(): string;
+  get Title(): string;
 }

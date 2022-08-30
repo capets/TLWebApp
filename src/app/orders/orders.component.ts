@@ -12,7 +12,7 @@ export class OrdersComponent implements ITitleComponent {
 
   ngOnInit(): void {
   }
-  getTitle(): string {
+  get Title(): string {
     return "Curse si Comenzi";
   }
 

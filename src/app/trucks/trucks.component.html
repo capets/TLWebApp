@@ -1,28 +1,76 @@
 <div class="row">
   <div class="col-12">
-    <table class="table">
+    <table class="table align-middle table-hover">
       <thead class="table-light">
       <tr>
         <th>#</th>
         <th>Marca</th>
         <th>Numar</th>
-        <th>VIN</th>
+        <th>Vin</th>
+        <th>Certificat ITP</th>
+        <th>Certificat CEMT</th>
+        <th>Rca</th>
+        <th>Agreriere</th>
+        <th>Cartea Verde</th>
+        <th>Casco</th>
+        <th>Extinctor</th>
+        <th>Tahograf</th>
         <th></th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let truck of trucks; let idx = index;">
+      <tr *ngFor="let truck of trucks; let idx = index;"
+          (click)="onEditClick(truck)"
+          [ngClass]="truck.id == this.selectedTruckId ? 'active' : ''">
         <th scope="row">{{idx + 1}}</th>
         <td>{{truck.brand}}</td>
         <td>{{truck.plateNumber}}</td>
         <td>{{truck.vin}}</td>
-        <td class="col-3 text-end">
-          <button class="btn btn-primary me-2">Editeaza</button>
-          <button class="btn btn-danger" (click)="onDeleteClick(truck)">Elimina</button>
+        <td [ngClass]="getCellColor(truck.itpExpDate)">{{truck.itpExpDate | date:'dd.MM.yyyy'}}</td>
+        <td [ngClass]="getCellColor(truck.certCemtExpDate)">{{truck.certCemtExpDate | date:'dd.MM.yyyy'}}</td>
+        <td [ngClass]="getCellColor(truck.certRcaExpDate)">{{truck.certRcaExpDate | date:'dd.MM.yyyy'}}</td>
+        <td [ngClass]="getCellColor(truck.certAgrExpDate)">{{truck.certAgrExpDate | date:'dd.MM.yyyy'}}</td>
+        <td [ngClass]="getCellColor(truck.certCVerdeExpDate)">{{truck.certCVerdeExpDate | date:'dd.MM.yyyy'}}</td>
+        <td [ngClass]="getCellColor(truck.certCascoExpDate)">{{truck.certCascoExpDate | date:'dd.MM.yyyy'}}</td>
+        <td [ngClass]="getCellColor(truck.certStingExpDate)">{{truck.certStingExpDate | date:'dd.MM.yyyy'}}</td>
+        <td [ngClass]="getCellColor(truck.certTahoExpDate)">{{truck.certTahoExpDate | date:'dd.MM.yyyy'}}</td>
+        <td class="col-1 text-center">
+          <button id="deleteButton" class="btn btn-danger" (click)="onDeleteClick(truck); $event.stopPropagation()">
+            <span class="oi oi-trash" aria-hidden="true"></span>
+          </button>
         </td>
       </tr>
       </tbody>
     </table>
-    <button class="btn btn-primary">Adauga</button>
+    <button class="btn btn-primary" (click)="onAddClick()">Adauga</button>
   </div>
 </div>
+
+
+<!--<ng-template #deleteDialog>-->
+<!--  <div class="modal-header">-->
+<!--    <h4 class="modal-title">{{dialogTitle}}</h4>-->
+<!--  </div>-->
+<!--  <div class="modal-body">-->
+<!--    <h5 class="alert alert-warning">-->
+<!--      Esti sigur ca doresti sa elimini camionul cu numarul {{trucksService.activeModel.plateNumber}}?-->
+<!--    </h5>-->
+<!--  </div>-->
+<!--  <div class="modal-footer">-->
+<!--    <button type="button" class="btn btn-secondary" (click)="modalService.hide()">Nu</button>-->
+<!--    <button type="button" class="btn btn-danger" (click)="confirmDelete()">Da</button>-->
+<!--  </div>-->
+<!--</ng-template>-->
+
+<!--<ng-template #editDialog>-->
+<!--  <div class="modal-header">-->
+<!--    <h4 class="modal-title">{{dialogTitle}}</h4>-->
+<!--  </div>-->
+<!--  <div class="modal-body">-->
+<!--    <app-truck-edit></app-truck-edit>-->
+<!--  </div>-->
+<!--  <div class="modal-footer">-->
+<!--    <button type="button" class="btn btn-primary" (click)="confirmSubmit()">Salveaza</button>-->
+<!--    <button type="button" class="btn btn-secondary" (click)="modalService.hide()">Anuleaza</button>-->
+<!--  </div>-->
+<!--</ng-template>-->

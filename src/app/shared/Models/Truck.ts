@@ -1,17 +1,22 @@
-export class Truck{
-  brand: string;
-  height: number =0;
-  id?: number;
-  length: number =0;
-  plateNumber: string;
-  vin: string='';
-  volum: number=0;
-  width: number=0;
+import {Vehicle} from "./Vehicle";
+import {VehicleCategory} from "./VehicleCategory";
+import {VehicleCategoriesRepositoryInMemory} from "../Repositories/vehicle-categories-repository-in-memory";
 
-  constructor(id:number, brand:string, plateNumber:string, vin:string) {
-    this.id=id;
-    this.brand = brand;
-    this.plateNumber = plateNumber;
-    this.vin = vin;
+export class Truck extends Vehicle{
+  constructor() {
+    super();
+  }
+  private _vehicleCategoryId!:number;
+  fuelConsumptionSummer!:number;
+  fuelConsumptionWinter!: number;
+  fuelTank!: number;
+  certTahoExpDate?: Date;
+
+  get vehicleCategoryId():number{
+    return this._vehicleCategoryId;
+  }
+
+  set vehicleCategoryId(value){
+    this._vehicleCategoryId = value;
   }
 }

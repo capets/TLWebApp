@@ -2,6 +2,9 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 @import url('./assets/open-iconic/font/css/open-iconic-bootstrap.min.css');
 
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
 :root{
   --color-blue: #2196f3;
   --color-darkblue: #1769aa;
@@ -10,6 +13,7 @@
   --color-green: #009688;
   --color-darkgreen: #03766b;
   --color-dark: #33334c;
+  --color-lightblue:#e7f3fd;
 }
 .main{
   position: relative;
@@ -39,6 +43,10 @@
   height: 100vh;
   width: 250px;
   background-color: var(--color-dark);
+
+  .container{
+    padding: 0;
+  }
 }
 
 .top-row-brand{
@@ -62,16 +70,12 @@
   font-size: 1.1rem;
 }
 
+tbody{
+  tr{
+    cursor: pointer;
 
-
-
-
-
-
-
-
-
-
-
-/* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+    &.active{
+      background-color: var(--color-lightblue);
+    }
+  }
+}

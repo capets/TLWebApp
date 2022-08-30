@@ -13,6 +13,6 @@ export class AppComponent {
   constructor() { }
 
   onRouteActivate(component: ITitleComponent) {
-    TopbarComponent.title = component.getTitle();
+    TopbarComponent.title = component.Title;
   }
 }
