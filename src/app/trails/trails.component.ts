@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ITitleComponent} from "../shared/Interfaces/ITitleComponent";
-import {ColorByDate} from "../shared/Helpers/ColorByDate";
+import {ColorByDate} from "../shared/Helpers/color-by-date";
 import {TrailsService} from "../shared/Services/trails/trails.service";
 import {Trail} from "../shared/Models/Trail";
 import {TrailEditorServiceComponent} from "../shared/Services/trails/trail-editor-service-component";

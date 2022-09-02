@@ -1,37 +1,50 @@
 <div class="modal-header">
-  <h4 class="modal-title">{{model.id > 0 ? 'Editeaza camionul' : 'Adauga camion'}}</h4>
+  <h4 class="modal-title">
+    {{model.id > 0 ? 'Editeaza camionul' : 'Adauga camion'}}
+  </h4>
 </div>
 <div class="modal-body">
-  <div class="form">
+  <form class="form" novalidate #form="ngForm" [ngFormOptions]="{updateOn: 'blur'}">
     <div class="container">
       <div class="row mb-2">
         <div class="col">
           <label for="brand" class="form-label">Marca</label>
-          <input id="brand" class="form-control" [(ngModel)]="model.brand"/>
+          <input id="brand" name="brand" class="form-control"
+                 [(ngModel)]="model.brand">
         </div>
+
         <div class="col">
-          <label for="plate" class="form-label">Numar inmatriculare</label>
-          <input id="plate" class="form-control" [(ngModel)]="model.plateNumber"/>
+          <label for="plate" class="form-label required">Numar inmatriculare</label>
+          <input id="plate" name="plateNumber" class="form-control"
+                 [(ngModel)]="model.plateNumber"
+                 required #plate="ngModel">
+          <app-validation-summary [appValidationModel]="plate"></app-validation-summary>
         </div>
+
         <div class="col">
           <label for="vin" class="form-label">VIN</label>
-          <input id="vin" class="form-control" [(ngModel)]="model.vin"/>
+          <input id="vin" name="vin" class="form-control"
+                 [(ngModel)]="model.vin"/>
         </div>
         <div class="col">
           <label for="category" class="form-label">Categorie</label>
-          <select id="category" class="form-control form-select"
+          <select id="category" name="category" class="form-control form-select"
                   [(ngModel)]="model.vehicleCategoryId">
+            <option value="0">Selecteaza categoria</option>
             <option *ngFor="let category of categories"
                     [ngValue]="category.id">{{category.name}}</option>
           </select>
         </div>
         <div class="col">
           <label for="type" class="form-label">Tip</label>
-          <select id="type" class="form-control form-select"
+          <select id="type" name="type" class="form-control form-select"
                   [(ngModel)]="selectedAutoType"
-                  [disabled]="model.vehicleCategoryId == 2" >
+                  [disabled]="model.vehicleCategoryId == 2">
+            <option value="0">Selecteaza tipul</option>
             <option *ngFor="let autoType of autoTypes"
-                    [ngValue]="autoType.id">{{autoType.name}}</option>
+                    [ngValue]="autoType.id">
+              {{autoType.name}}
+            </option>
           </select>
         </div>
 
@@ -40,52 +53,70 @@
       <div class="row mb-2">
         <div class="col">
           <label for="length" class="form-label">Lungime, m</label>
-          <input #length id="length" class="form-control"
+          <input #lenghtInput #length="ngModel"
+                 id="length" name="length" class="form-control"
                  [(ngModel)]="model.length"
-                 (focusin)="onFocusIn(length)"
-                 (focusout)="onFocusOut(length)"/>
+                 (focusin)="onFocusIn(lenghtInput)"
+                 (focusout)="onFocusOut(lenghtInput)"
+                 pattern="{{validationHelper.Pattern.Numbers}}">
+          <app-validation-summary [appValidationModel]="length"></app-validation-summary>
         </div>
         <div class="col">
           <label for="width" class="form-label">Latime, m</label>
-          <input #width id="width" class="form-control"
+          <input #widthInput #width="ngModel"
+                 id="width" name="width" class="form-control"
                  [(ngModel)]="model.width"
-                 (focusin)="onFocusIn(width)"
-                 (focusout)="onFocusOut(width)"/>
+                 (focusin)="onFocusIn(widthInput)"
+                 (focusout)="onFocusOut(widthInput)"
+                 pattern="{{validationHelper.Pattern.Numbers}}"/>
+          <app-validation-summary [appValidationModel]="width"></app-validation-summary>
         </div>
         <div class="col">
           <label for="height" class="form-label">Inaltime, m</label>
-          <input #height id="height" class="form-control"
+          <input #heightInput #height="ngModel"
+                 id="height" name="height" class="form-control"
                  [(ngModel)]="model.height"
-                 (focusin)="onFocusIn(height)"
-                 (focusout)="onFocusOut(height)"/>
+                 (focusin)="onFocusIn(heightInput)"
+                 (focusout)="onFocusOut(heightInput)"
+                 pattern="{{validationHelper.Pattern.Numbers}}"/>
+          <app-validation-summary [appValidationModel]="height"></app-validation-summary>
         </div>
         <div class="col">
-        <label for="volume" class="form-label">Volum, m3</label>
-        <input id="volume" class="form-control" readonly [value]="model.volume"/>
-      </div>
+          <label for="volume" class="form-label">Volum, m3</label>
+          <input id="volume" class="form-control" readonly [value]="model.volume"/>
+
+        </div>
 
         <div class="col">
           <label for="tank" class="form-label">Rezervor, l</label>
-          <input #tank id="tank" class="form-control"
+          <input #tankInput #tank="ngModel" id="tank" name="tank" class="form-control"
                  [(ngModel)]="model.fuelTank"
-                 (focusin)="onFocusIn(tank)"
-                 (focusout)="onFocusOut(tank)"/>
+                 (focusin)="onFocusIn(tankInput)"
+                 (focusout)="onFocusOut(tankInput)"
+                 pattern="{{validationHelper.Pattern.Numbers}}"/>
+          <app-validation-summary [appValidationModel]="tank"></app-validation-summary>
         </div>
 
         <div class="col">
           <label for="summer" class="form-label">Consum vara</label>
-          <input #summer id="summer" class="form-control"
+          <input #summerInput id="summer" name="summer" class="form-control"
                  [(ngModel)]="model.fuelConsumptionSummer"
-                 (focusin)="onFocusIn(summer)"
-                 (focusout)="onFocusOut(summer)"/>
+                 (focusin)="onFocusIn(summerInput)"
+                 (focusout)="onFocusOut(summerInput)"
+                 #summer="ngModel"
+                 pattern="{{validationHelper.Pattern.Numbers}}"/>
+          <app-validation-summary [appValidationModel]="summer"></app-validation-summary>
         </div>
 
         <div class="col">
           <label for="winter" class="form-label">Consum iarna</label>
-          <input #winter id="winter" class="form-control"
+          <input #winterInput id="winter" name="winter" class="form-control"
                  [(ngModel)]="model.fuelConsumptionWinter"
-                 (focusin)="onFocusIn(winter)"
-                 (focusout)="onFocusOut(winter)"/>
+                 (focusin)="onFocusIn(winterInput)"
+                 (focusout)="onFocusOut(winterInput)"
+                 #winter="ngModel"
+                 pattern="{{validationHelper.Pattern.Numbers}}"/>
+          <app-validation-summary [appValidationModel]="winter"></app-validation-summary>
         </div>
       </div>
 
@@ -95,52 +126,60 @@
           <label for="itpExp" class="form-label">Valabilitate ITP</label>
           <div class="input-group">
             <input type="text"
-                   id="itpExp" class="form-control"
+                   id="itpExp" name="itpExp" class="form-control"
                    [ngClass]="getColor(model.itpExpDate)"
                    placeholder="Data expirare"
                    bsDatepicker
                    [bsConfig]="pickerConfig.get()"
-                   [(ngModel)]="model.itpExpDate">
+                   [(ngModel)]="model.itpExpDate"
+                   #itpExp="ngModel">
           </div>
+          <app-validation-summary [appValidationModel]="itpExp"></app-validation-summary>
         </div>
 
         <div class="col">
           <label for="certCemtExp" class="form-label">Valabilitate CEMT</label>
           <div class="input-group">
-            <input type="text" id="certCemtExp"
+            <input type="text" id="certCemtExp" name="certCemtExp"
                    [ngClass]="getColor(model.certCemtExpDate)"
                    placeholder="Data expirare"
                    class="form-control"
                    bsDatepicker
                    [bsConfig]="pickerConfig.get()"
-                   [(ngModel)]="model.certCemtExpDate">
+                   [(ngModel)]="model.certCemtExpDate"
+                   #certCemtExp="ngModel">
           </div>
+          <app-validation-summary [appValidationModel]="certCemtExp"></app-validation-summary>
         </div>
 
         <div class="col">
           <label for="certAgrExp" class="form-label">Valabilitate Agreriere</label>
           <div class="input-group">
-            <input type="text" id="certAgrExp"
+            <input type="text" id="certAgrExp" name="certAgrExp"
                    [ngClass]="getColor(model.certAgrExpDate)"
                    placeholder="Data expirare"
                    class="form-control"
                    bsDatepicker
                    [bsConfig]="pickerConfig.get()"
-                   [(ngModel)]="model.certAgrExpDate">
+                   [(ngModel)]="model.certAgrExpDate"
+                   #certAgrExp="ngModel">
           </div>
+          <app-validation-summary [appValidationModel]="certAgrExp"></app-validation-summary>
         </div>
 
         <div class="col">
           <label for="certRcaExp" class="form-label">Valabilitate Rca</label>
           <div class="input-group">
-            <input type="text" id="certRcaExp"
+            <input type="text" id="certRcaExp" name="certRcaExp"
                    [ngClass]="getColor(model.certRcaExpDate)"
                    placeholder="Data expirare"
                    class="form-control"
                    bsDatepicker
                    [bsConfig]="pickerConfig.get()"
-                   [(ngModel)]="model.certRcaExpDate">
+                   [(ngModel)]="model.certRcaExpDate"
+                   #certRcaExp="ngModel">
           </div>
+          <app-validation-summary [appValidationModel]="certRcaExp"></app-validation-summary>
         </div>
       </div>
 
@@ -148,62 +187,71 @@
         <div class="col">
           <label for="certCVerde" class="form-label">Valabiliate Carte Verde</label>
           <div class="input-group">
-            <input type="text" id="certCVerde"
-                   [ngClass]="getColor(model.certCVerdeExpDate)"
+            <input type="text" id="certCVerde" name="certCVerde"
                    placeholder="Data expirare"
                    class="form-control"
                    bsDatepicker
+                   [ngClass]="getColor(model.certCVerdeExpDate)"
                    [bsConfig]="pickerConfig.get()"
-                   [(ngModel)]="model.certCVerdeExpDate">
+                   [(ngModel)]="model.certCVerdeExpDate"
+                   #certCVerde="ngModel">
           </div>
+          <app-validation-summary [appValidationModel]="certCVerde"></app-validation-summary>
+
         </div>
 
         <div class="col">
           <label for="certCasco" class="form-label">Valabiliate Casco</label>
           <div class="input-group">
-            <input type="text" id="certCasco"
+            <input type="text" id="certCasco" name="certCasco"
                    [ngClass]="getColor(model.certCascoExpDate)"
                    placeholder="Data expirare"
                    class="form-control"
                    bsDatepicker
                    [bsConfig]="pickerConfig.get()"
-                   [(ngModel)]="model.certCascoExpDate">
+                   [(ngModel)]="model.certCascoExpDate"
+                   #certCasco="ngModel">
           </div>
+          <app-validation-summary [appValidationModel]="certCasco"></app-validation-summary>
         </div>
 
         <div class="col">
-          <label for="certSting" class="form-label">Valabiliate Extinctor</label>
+          <label for="certExtin" class="form-label">Valabiliate Extinctor</label>
           <div class="input-group">
-            <input type="text" id="certSting"
+            <input type="text" id="certExtin" name="certExtin"
                    [ngClass]="getColor(model.certStingExpDate)"
                    placeholder="Data expirare"
                    class="form-control"
                    bsDatepicker
                    [bsConfig]="pickerConfig.get()"
-                   [(ngModel)]="model.certStingExpDate">
+                   [(ngModel)]="model.certStingExpDate"
+                   #certExtin="ngModel">
           </div>
+          <app-validation-summary [appValidationModel]="certExtin"></app-validation-summary>
         </div>
 
         <div class="col">
           <label for="certTaho" class="form-label">Valabiliate Tahograf</label>
           <div class="input-group">
-            <input type="text" id="certTaho"
+            <input type="text" id="certTaho" name="certTaho"
                    [ngClass]="getColor(model.certTahoExpDate)"
                    placeholder="Data expirare"
                    class="form-control"
                    bsDatepicker
                    [bsConfig]="pickerConfig.get()"
-                   [(ngModel)]="model.certTahoExpDate">
+                   [(ngModel)]="model.certTahoExpDate"
+                   #certTaho="ngModel">
           </div>
+          <app-validation-summary [appValidationModel]="certTaho"></app-validation-summary>
         </div>
 
       </div>
 
     </div>
-  </div>
+  </form>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-primary" (click)="confirmSubmit()">Salveaza</button>
+  <button type="submit" class="btn btn-primary" [disabled]="form.invalid" (click)="confirmSubmit()">Salveaza</button>
   <button type="button" class="btn btn-secondary" (click)="decline()">Anuleaza</button>
 </div>
 

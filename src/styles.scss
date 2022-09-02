@@ -79,3 +79,14 @@ tbody{
     }
   }
 }
+
+.required:after {
+  content:" *";
+  color: red;
+}
+
+.input-group{
+  .alert{
+    margin-bottom: 0;
+  }
+}

@@ -1,12 +1,11 @@
 import {Vehicle} from "./Vehicle";
-import {VehicleCategory} from "./VehicleCategory";
-import {VehicleCategoriesRepositoryInMemory} from "../Repositories/vehicle-categories-repository-in-memory";
 
 export class Truck extends Vehicle{
   constructor() {
     super();
+    this._vehicleCategoryId = 0;
   }
-  private _vehicleCategoryId!:number;
+  private _vehicleCategoryId:number;
   fuelConsumptionSummer!:number;
   fuelConsumptionWinter!: number;
   fuelTank!: number;

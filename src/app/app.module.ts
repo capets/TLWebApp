@@ -11,13 +11,15 @@ import { TrucksComponent } from './trucks/trucks.component';
 import { TrailsComponent } from './trails/trails.component';
 import { ClientsComponent } from './clients/clients.component';
 import { HomeComponent } from './home/home.component';
-import {FormsModule} from "@angular/forms";
+import { FormsModule } from "@angular/forms";
 import { TruckEditorServiceComponent } from './shared/Services/trucks/truck-editor-service-component';
-import {BsDatepickerModule} from "ngx-bootstrap/datepicker";
+import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TrailEditorServiceComponent } from './shared/Services/trails/trail-editor-service-component';
-import {DeleteModalServiceComponent} from "./shared/Services/base/delete-modal-service";
+import { DeleteModalServiceComponent } from "./shared/Services/base/delete-modal-service";
+import { ValidationSummaryComponent } from './shared/Validation/validation-summary/validation-summary.component';
+import { ValidationModelDirective } from './shared/Validation/validation-summary/validation-model.directive';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import {DeleteModalServiceComponent} from "./shared/Services/base/delete-modal-s
     HomeComponent,
     TruckEditorServiceComponent,
     TrailEditorServiceComponent,
-    DeleteModalServiceComponent
+    DeleteModalServiceComponent,
+    ValidationSummaryComponent,
+    ValidationModelDirective
 
   ],
     imports: [

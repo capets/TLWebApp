@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, Injectable} from '@angular/core';
-import {DatePickerConfig} from "../../Helpers/DatePickerConfig";
+import {DatePickerConfig} from "../../Helpers/date-picker-config";
 import {BsLocaleService} from "ngx-bootstrap/datepicker";
 import {TrailsService} from "./trails.service";
 import {Trail} from "../../Models/Trail";
@@ -9,6 +9,7 @@ import {TrailCategoriesService} from "../trucks/trail-categories-service";
 import {AutoTypesService} from "../base/auto-types-service";
 import {TrailCategory} from "../../Models/TrailCategory";
 import {AutoType} from "../../Models/AutoType";
+import {ValidationHelper} from "../../Helpers/validation-helper";
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,8 @@ export class TrailEditorServiceComponent extends EditModalService<Trail> impleme
               private autoTypesService: AutoTypesService,
               private datePickerConf: DatePickerConfig,
               private localeService: BsLocaleService,
-              private modalService: BsModalService) {
+              private modalService: BsModalService,
+              public validationHelper: ValidationHelper ) {
     super(trailsService, datePickerConf, localeService, modalService);
     this.model = new Trail();
   }
