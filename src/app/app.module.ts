@@ -20,6 +20,7 @@ import { TrailEditorServiceComponent } from './shared/Services/trails/trail-edit
 import { DeleteModalServiceComponent } from "./shared/Services/base/delete-modal-service";
 import { ValidationSummaryComponent } from './shared/Validation/validation-summary/validation-summary.component';
 import { ValidationModelDirective } from './shared/Validation/validation-summary/validation-model.directive';
+import { DriverEditServiceComponent } from './shared/Services/drivers/driver-edit-service.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ValidationModelDirective } from './shared/Validation/validation-summary
     TrailEditorServiceComponent,
     DeleteModalServiceComponent,
     ValidationSummaryComponent,
-    ValidationModelDirective
+    ValidationModelDirective,
+    DriverEditServiceComponent
 
   ],
     imports: [

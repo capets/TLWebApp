@@ -107,6 +107,36 @@ export class ValidationHelper {
           {type: 'bsDate', message: 'Data incorecta'}
         ]
       ],
+      ['birthDate',
+        [
+          {type: 'bsDate', message: 'Data incorecta'}
+        ]
+      ],
+      ['licExpDate',
+        [
+          {type: 'bsDate', message: 'Data incorecta'}
+        ]
+      ],
+      ['tahoExpDate',
+        [
+          {type: 'bsDate', message: 'Data incorecta'}
+        ]
+      ],
+      ['medExpDate',
+        [
+          {type: 'bsDate', message: 'Data incorecta'}
+        ]
+      ],
+      ['nationalExpDate',
+        [
+          {type: 'bsDate', message: 'Data incorecta'}
+        ]
+      ],
+      ['passportExpDate',
+        [
+          {type: 'bsDate', message: 'Data incorecta'}
+        ]
+      ],
     ]);
   }
 }

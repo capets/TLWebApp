@@ -9,26 +9,22 @@ export class AutoTypesRepositoryInMemory implements IRepository<AutoType, number
   private readonly _autoTypes:AutoType[];
   constructor() {
     this._autoTypes = [];
-
-    let autoType = new AutoType();
-    autoType.id = 1;
-    autoType.name = 'Prelata';
-    this._autoTypes.push(autoType);
-
-    autoType = new AutoType();
-    autoType.id = 2;
-    autoType.name = 'Frigider';
-    this._autoTypes.push(autoType);
-
-    autoType = new AutoType();
-    autoType.id = 3;
-    autoType.name = 'Duba';
-    this._autoTypes.push(autoType);
-
-    autoType = new AutoType();
-    autoType.id = 4;
-    autoType.name = 'Container';
-    this._autoTypes.push(autoType);
+    this._autoTypes.push(new AutoType({
+      id: 1,
+      name: 'Prelata'
+    }));
+    this._autoTypes.push(new AutoType({
+      id: 2,
+      name: 'Frigider'
+    }));
+    this._autoTypes.push(new AutoType({
+      id: 3,
+      name: 'Duba'
+    }));
+    this._autoTypes.push(new AutoType({
+      id: 4,
+      name: 'Container'
+    }));
   }
   Add(item: AutoType): void {
     const id = Math.max(...this._autoTypes.map(x => x.id));

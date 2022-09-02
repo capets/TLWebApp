@@ -1,0 +1,126 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{model.id > 0 ? 'Editeaza sofer' : 'Adauga sofer'}}</h4>
+</div>
+<div class="modal-body">
+  <form class="form" novalidate #form="ngForm" [ngFormOptions]="{updateOn: 'blur'}">
+    <div class="container">
+      <div class="row mb-2">
+        <div class="col">
+          <label for="lastName" class="form-label">Nume</label>
+          <input id="lastName" name="lastName" class="form-control" [(ngModel)]="model.lastName"/>
+        </div>
+        <div class="col">
+          <label for="firstName" class="form-label">Prenume</label>
+          <input id="firstName" name="firstName" class="form-control"
+                 [(ngModel)]="model.firstName">
+        </div>
+        <div class="col">
+          <label for="nationalId" class="form-label">Idnp</label>
+          <input id="nationalId" name="nationalId" class="form-control" [(ngModel)]="model.nationalId"/>
+        </div>
+
+      </div>
+
+      <div class="row mb-2">
+
+        <div class="col">
+          <label for="birthDate" class="form-label">Data nastere</label>
+          <div class="input-group">
+            <input type="text"
+                   id="birthDate" name="birthDate" class="form-control alert alert-primary"
+                   placeholder="Data nastere"
+                   bsDatepicker
+                   [bsConfig]="pickerConfig.get()"
+                   [(ngModel)]="model.birthDate"
+                   #birthDate="ngModel">
+          </div>
+          <app-validation-summary [appValidationModel]="birthDate"></app-validation-summary>
+          </div>
+
+
+
+        <div class="col">
+          <label for="licExpDate" class="form-label">Permis conducere</label>
+          <div class="input-group">
+            <input type="text" id="licExpDate" name="licExpDate"
+                   [ngClass]="getColor(model.licExpDate)"
+                   placeholder="Data expirare"
+                   class="form-control"
+                   bsDatepicker
+                   [bsConfig]="pickerConfig.get()"
+                   [(ngModel)]="model.licExpDate"
+                   #licExpDate="ngModel">
+          </div>
+          <app-validation-summary [appValidationModel]="licExpDate"></app-validation-summary>
+        </div>
+
+        <div class="col">
+          <label for="tahoExpDate" class="form-label">Valabilitate Taho</label>
+          <div class="input-group">
+            <input type="text" id="tahoExpDate" name="tahoExpDate"
+                   [ngClass]="getColor(model.tahoExpDate)"
+                   placeholder="Data expirare"
+                   class="form-control"
+                   bsDatepicker
+                   [bsConfig]="pickerConfig.get()"
+                   [(ngModel)]="model.tahoExpDate"
+                   #tahoExpDate="ngModel">
+          </div>
+          <app-validation-summary [appValidationModel]="tahoExpDate"></app-validation-summary>
+        </div>
+      </div>
+
+      <div class="row mb-2">
+        <div class="col">
+          <label for="medExpDate" class="form-label">Valabilitate cert. medical</label>
+          <div class="input-group">
+            <input type="text" id="medExpDate" name="medExpDate"
+                   [ngClass]="getColor(model.medExpDate)"
+                   placeholder="Data expirare"
+                   class="form-control"
+                   bsDatepicker
+                   [bsConfig]="pickerConfig.get()"
+                   [(ngModel)]="model.medExpDate"
+                   #medExpDate="ngModel">
+          </div>
+          <app-validation-summary [appValidationModel]="medExpDate"></app-validation-summary>
+        </div>
+
+        <div class="col">
+          <label for="nationalExpDate" class="form-label">Valabilitate Buletin</label>
+          <div class="input-group">
+            <input type="text" id="nationalExpDate" name="nationalExpDate"
+                   [ngClass]="getColor(model.nationalExpDate)"
+                   placeholder="Data expirare"
+                   class="form-control"
+                   bsDatepicker
+                   [bsConfig]="pickerConfig.get()"
+                   [(ngModel)]="model.nationalExpDate"
+                   #nationalExpDate="ngModel">
+          </div>
+          <app-validation-summary [appValidationModel]="nationalExpDate"></app-validation-summary>
+        </div>
+
+        <div class="col">
+          <label for="passportExpDate" class="form-label">Valabiliate Casco</label>
+          <div class="input-group">
+            <input type="text" id="passportExpDate" name="passportExpDate"
+                   [ngClass]="getColor(model.passportExpDate)"
+                   placeholder="Data expirare"
+                   class="form-control"
+                   bsDatepicker
+                   [bsConfig]="pickerConfig.get()"
+                   [(ngModel)]="model.passportExpDate"
+                   #passportExpDate="ngModel">
+          </div>
+          <app-validation-summary [appValidationModel]="passportExpDate"></app-validation-summary>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" [disabled]="form.invalid" (click)="confirmSubmit()">Salveaza</button>
+  <button type="button" class="btn btn-secondary" (click)="decline()">Anuleaza</button>
+</div>
+

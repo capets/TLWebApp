@@ -1,1 +1,41 @@
-<p>drivers works!</p>
+<div class="row">
+  <div class="col-12">
+    <table class="table align-middle table-hover">
+      <thead class="table-light">
+      <tr>
+        <th>#</th>
+        <th>Nume prenume</th>
+        <th>Idnp</th>
+        <th>Data nastere</th>
+        <th>Permis conducere</th>
+        <th>Certificat Taho</th>
+        <th>Certificat medical</th>
+        <th>Buletin</th>
+        <th>Pasaport</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let driver of drivers; let idx = index;"
+          (click)="onEditClick(driver)"
+          [ngClass]="driver.id == this.selectedDriverId ? 'active' : ''">
+        <th scope="row">{{idx + 1}}</th>
+        <td>{{driver.fullName}}</td>
+        <td>{{driver.nationalId}}</td>
+        <td>{{driver.birthDate | date:'dd.MM.yyyy'}}</td>
+        <td [ngClass]="getCellColor(driver.licExpDate)">{{driver.licExpDate | date:'dd.MM.yyyy'}}</td>
+        <td [ngClass]="getCellColor(driver.tahoExpDate)">{{driver.tahoExpDate | date:'dd.MM.yyyy'}}</td>
+        <td [ngClass]="getCellColor(driver.medExpDate)">{{driver.medExpDate | date:'dd.MM.yyyy'}}</td>
+        <td [ngClass]="getCellColor(driver.nationalExpDate)">{{driver.nationalExpDate | date:'dd.MM.yyyy'}}</td>
+        <td [ngClass]="getCellColor(driver.passportExpDate)">{{driver.passportExpDate | date:'dd.MM.yyyy'}}</td>
+        <td class="col-1 text-center">
+          <button id="deleteButton" class="btn btn-danger" (click)="onDeleteClick(driver); $event.stopPropagation()">
+            <span class="oi oi-trash" aria-hidden="true"></span>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-primary" (click)="onAddClick()">Adauga</button>
+  </div>
+</div>
