@@ -1,6 +1,6 @@
 import {Component, Injectable } from '@angular/core';
 import {BsModalService, ModalOptions} from "ngx-bootstrap/modal";
-import {Service} from "./Service";
+import {Service} from "./service";
 import {TrailsService} from "../trails/trails.service";
 
 @Injectable({

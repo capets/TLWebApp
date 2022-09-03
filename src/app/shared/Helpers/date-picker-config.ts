@@ -10,7 +10,7 @@ export class DatePickerConfig{
       containerClass: 'theme-dark-blue',
       showWeekNumbers: false,
       showTodayButton: true,
-      todayButtonLabel: 'Data curenta'
+      todayButtonLabel: 'Ziua curenta'
     }
   }
 }

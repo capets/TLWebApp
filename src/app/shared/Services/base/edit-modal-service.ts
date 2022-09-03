@@ -2,7 +2,7 @@ import {EventEmitter, Injectable, Injector, Input, OnInit} from "@angular/core";
 import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
 import {DatePickerConfig} from "../../Helpers/date-picker-config";
 import {BsLocaleService} from "ngx-bootstrap/datepicker";
-import {Service} from "./Service";
+import {Service} from "./service";
 import {EditHelper} from "../../Helpers/edit-helper";
 import {ColorByDate} from "../../Helpers/color-by-date";
 import {defineLocale} from "ngx-bootstrap/chronos";
@@ -22,6 +22,7 @@ export abstract class EditModalService<T> implements OnInit{
     roLocale.invalidDate = '';
     defineLocale('ro', roLocale);
     this.bsLocaleService.use('ro');
+    bsModalService.config.backdrop = 'static';
   }
 
   ngOnInit(): void {

@@ -1,7 +1,7 @@
 import {Injectable, OnInit} from '@angular/core';
 import {Truck} from "../../Models/Truck";
 import {TrucksRepositoryInMemory} from "../../Repositories/trucks-repository-in-memory";
-import {Service} from "../base/Service";
+import {Service} from "../base/service";
 
 @Injectable({
   providedIn: 'root'

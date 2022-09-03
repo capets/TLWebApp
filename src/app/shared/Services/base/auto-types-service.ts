@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Service} from "./Service";
+import {Service} from "./service";
 import {AutoType} from "../../Models/AutoType";
 import {AutoTypesRepositoryInMemory} from "../../Repositories/auto-types-repository-in-memory";
 

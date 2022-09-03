@@ -1,7 +1,8 @@
-<div class="modal-header">
-  <h4 class="modal-title">{{model.id > 0 ? 'Editeaza sofer' : 'Adauga sofer'}}</h4>
-</div>
-<div class="modal-body">
+<modal-component
+  [title]="model.id > 0 ? 'Editeaza sofer' : 'Adauga sofer'"
+  [form]="form"
+  (onDecline)="decline()"
+  (onSubmit)="confirmSubmit()">
   <form class="form" novalidate #form="ngForm" [ngFormOptions]="{updateOn: 'blur'}">
     <div class="container">
       <div class="row mb-2">
@@ -27,7 +28,7 @@
           <label for="birthDate" class="form-label">Data nastere</label>
           <div class="input-group">
             <input type="text"
-                   id="birthDate" name="birthDate" class="form-control alert alert-primary"
+                   id="birthDate" name="birthDate" class="form-control alert alert-secondary"
                    placeholder="Data nastere"
                    bsDatepicker
                    [bsConfig]="pickerConfig.get()"
@@ -35,7 +36,7 @@
                    #birthDate="ngModel">
           </div>
           <app-validation-summary [appValidationModel]="birthDate"></app-validation-summary>
-          </div>
+        </div>
 
 
 
@@ -118,9 +119,4 @@
       </div>
     </div>
   </form>
-</div>
-<div class="modal-footer">
-  <button type="button" class="btn btn-primary" [disabled]="form.invalid" (click)="confirmSubmit()">Salveaza</button>
-  <button type="button" class="btn btn-secondary" (click)="decline()">Anuleaza</button>
-</div>
-
+</modal-component>

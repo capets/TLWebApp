@@ -21,6 +21,7 @@ import { DeleteModalServiceComponent } from "./shared/Services/base/delete-modal
 import { ValidationSummaryComponent } from './shared/Validation/validation-summary/validation-summary.component';
 import { ValidationModelDirective } from './shared/Validation/validation-summary/validation-model.directive';
 import { DriverEditServiceComponent } from './shared/Services/drivers/driver-edit-service.component';
+import {ModalComponent} from "./shared/Services/base/modal-component";
 
 @NgModule({
   declarations: [
@@ -38,8 +39,8 @@ import { DriverEditServiceComponent } from './shared/Services/drivers/driver-edi
     DeleteModalServiceComponent,
     ValidationSummaryComponent,
     ValidationModelDirective,
-    DriverEditServiceComponent
-
+    DriverEditServiceComponent,
+    ModalComponent
   ],
     imports: [
         BrowserModule,

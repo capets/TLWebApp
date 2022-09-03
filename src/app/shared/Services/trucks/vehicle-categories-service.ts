@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {VehicleCategoriesRepositoryInMemory} from "../../Repositories/vehicle-categories-repository-in-memory";
-import {Service} from "../base/Service";
+import {Service} from "../base/service";
 import {VehicleCategory} from "../../Models/VehicleCategory";
 
 @Injectable({

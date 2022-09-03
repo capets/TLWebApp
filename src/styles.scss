@@ -90,3 +90,11 @@ tbody{
     margin-bottom: 0;
   }
 }
+
+.modal-header{
+  background-color: var(--color-blue);
+
+  .modal-title{
+    color: #fff;
+  }
+}

@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Service} from "../base/Service";
+import {Service} from "../base/service";
 import {TrailCategory} from "../../Models/TrailCategory";
 import {TrailCategoriesRepositoryInMemory} from "../../Repositories/trail-categories-repository-in-memory";
 

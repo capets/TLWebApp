@@ -1,9 +1,8 @@
-<div class="modal-header">
-  <h4 class="modal-title">
-    {{model.id > 0 ? 'Editeaza camionul' : 'Adauga camion'}}
-  </h4>
-</div>
-<div class="modal-body">
+<modal-component
+  [title]="model.id > 0 ? 'Editeaza camion' : 'Adauga camion'"
+  [form]="form"
+  (onDecline)="decline()"
+  (onSubmit)="confirmSubmit()">
   <form class="form" novalidate #form="ngForm" [ngFormOptions]="{updateOn: 'blur'}">
     <div class="container">
       <div class="row mb-2">
@@ -249,9 +248,6 @@
 
     </div>
   </form>
-</div>
-<div class="modal-footer">
-  <button type="submit" class="btn btn-primary" [disabled]="form.invalid" (click)="confirmSubmit()">Salveaza</button>
-  <button type="button" class="btn btn-secondary" (click)="decline()">Anuleaza</button>
-</div>
+</modal-component>
+
 

@@ -3,7 +3,7 @@ import {IRepository} from "../../Interfaces/IRepository";
 
 export abstract class Service<T> implements IEditService{
   protected _model!: T;
-  constructor(protected repository: IRepository<T, any>) {
+  protected constructor(protected repository: IRepository<T, any>) {
   }
 
   get activeModel(): T {
