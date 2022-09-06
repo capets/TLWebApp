@@ -1,42 +1,41 @@
 export class ExpirationsHelper {
-  static expirationProperties(): Map<string, any[]>{
-    return new Map<string, any[]>([
+  static expirationProperties(): Map<string, Map<string, string>>{
+    return new Map<string, Map<string, string>>([
         ['Truck', this.getForTrucks()],
         ['Trail', this.getForTrails()],
         ['Driver', this.getForDrivers()],
       ]
     )
   }
-  private static getForTrucks(): string[] {
+  private static getForTrucks(): Map<string, string> {
     const output = this.getForVehicles();
-    output.push('certTahoExpDate')
+    output.set('certTahoExpDate', 'Certificat Tahograf');
     return output;
   }
 
-  private static getForTrails():string[]{
-    return [...this.getForVehicles()
-    ];
+  private static getForTrails():Map<string, string>{
+    return new Map<string, string>(this.getForVehicles());
   }
 
-  private static getForVehicles():string[]{
-    return [
-      'certCemtExpDate',
-      'certRcaExpDate',
-      'certAgrExpDate',
-      'certCVerdeExpDate',
-      'certCascoExpDate',
-      'certStingExpDate',
-      'itpExpDate'
-    ];
+  private static getForVehicles(): Map<string, string>{
+    return new Map<string, string>( [
+      ['certCemtExpDate', 'Certificat CEMT'],
+      ['certRcaExpDate', 'Certificat RCA'],
+      ['certAgrExpDate', 'Certificat Agreriere'],
+      ['certCVerdeExpDate', 'Carte Verde'],
+      ['certCascoExpDate', 'Casco'],
+      ['certStingExpDate', 'Certificat Extinctor'],
+      ['itpExpDate', 'ITP']
+    ]);
   }
 
-  private static getForDrivers():string[] {
-    return [
-      'licExpDate',
-      'tahoExpDate',
-      'medExpDate',
-      'nationalExpDate',
-      'passportExpDate'
-    ];
+  private static getForDrivers(): Map<string, string> {
+    return new Map<string, string>( [
+      ['licExpDate', 'Permis Conducere'],
+      ['tahoExpDate', 'Certificat Tahograf'],
+      ['medExpDate', 'Certificat Medical'],
+      ['nationalExpDate', 'Buletin'],
+      ['passportExpDate', 'Pasaport']
+    ]);
   }
 }

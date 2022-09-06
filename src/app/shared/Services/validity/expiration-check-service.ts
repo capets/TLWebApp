@@ -30,11 +30,11 @@ export class ExpirationCheckService {
     for (const item of service.GetAll()) {
       expiration = [];
       if (ExpirationsHelper.expirationProperties().has(item.constructor.name)) {
-        for (const prop of ExpirationsHelper.expirationProperties().get(item.constructor.name) ?? []) {
+        for (const prop of ExpirationsHelper.expirationProperties().get(item.constructor.name)?.keys() ?? []) {
           // @ts-ignore
           if (this.isExpired(item[prop])) {
             expiration.push(new Expiration({
-              name: prop,
+              name: ExpirationsHelper.expirationProperties().get(item.constructor.name)?.get(prop),
               // @ts-ignore
               values: item[prop]
             }));
