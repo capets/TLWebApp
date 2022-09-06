@@ -1,0 +1,14 @@
+bs-datepicker-inline-container{
+  display: block!important;
+
+  &.bs-datepicker{
+    display: block;
+    &.bs-media-container{
+      display: block;
+    }
+
+  }
+}
+
+
+

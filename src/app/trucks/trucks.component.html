@@ -35,13 +35,15 @@
         <td [ngClass]="getCellColor(truck.certStingExpDate)">{{truck.certStingExpDate | date:'dd.MM.yyyy'}}</td>
         <td [ngClass]="getCellColor(truck.certTahoExpDate)">{{truck.certTahoExpDate | date:'dd.MM.yyyy'}}</td>
         <td class="col-1 text-center">
-          <button id="deleteButton" class="btn btn-danger" (click)="onDeleteClick(truck); $event.stopPropagation()">
+          <button id="deleteButton" class="btn btn-danger"
+                  (click)="onDeleteClick(truck); $event.stopPropagation()">
             <span class="oi oi-trash" aria-hidden="true"></span>
           </button>
         </td>
       </tr>
       </tbody>
     </table>
-    <button class="btn btn-primary" (click)="onAddClick()">Adauga</button>
+    <button class="btn btn-primary" type="button"
+            (click)="onAddClick()">Adauga</button>
   </div>
 </div>

@@ -29,4 +29,7 @@ export class Vehicle{
   get volume(){
     return this.height * this.width * this.length;
   }
+  get name():string|undefined{
+    return this.plateNumber;
+  }
 }

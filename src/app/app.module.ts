@@ -22,6 +22,11 @@ import { ValidationSummaryComponent } from './shared/Validation/validation-summa
 import { ValidationModelDirective } from './shared/Validation/validation-summary/validation-model.directive';
 import { DriverEditServiceComponent } from './shared/Services/drivers/driver-edit-service.component';
 import {ModalComponent} from "./shared/Services/base/modal-component";
+import { ClientEditServiceComponent } from './shared/Services/clients/client-edit-service.component';
+import { ExpirationCheckServiceComponent } from './shared/Services/validity/expiration-check-service-component';
+import {AccordionModule} from "ngx-bootstrap/accordion";
+import { ExpirationsComponent } from './expirations/expirations.component';
+import { AgendaComponent } from './agenda/agenda.component';
 
 @NgModule({
   declarations: [
@@ -40,16 +45,21 @@ import {ModalComponent} from "./shared/Services/base/modal-component";
     ValidationSummaryComponent,
     ValidationModelDirective,
     DriverEditServiceComponent,
-    ModalComponent
+    ModalComponent,
+    ClientEditServiceComponent,
+    ExpirationCheckServiceComponent,
+    ExpirationsComponent,
+    AgendaComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        BsDatepickerModule,
-        BrowserAnimationsModule,
-        ModalModule.forRoot()
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    BsDatepickerModule,
+    BrowserAnimationsModule,
+    ModalModule.forRoot(),
+    AccordionModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

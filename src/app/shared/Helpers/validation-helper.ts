@@ -137,6 +137,21 @@ export class ValidationHelper {
           {type: 'bsDate', message: 'Data incorecta'}
         ]
       ],
+      ['firstName',
+        [
+          {type: 'required', message: 'Campul este obligatoriu'},
+        ]
+      ],
+      ['lastName',
+        [
+          {type: 'required', message: 'Campul este obligatoriu'},
+        ]
+      ],
+      ['clientName',
+        [
+          {type: 'required', message: 'Campul este obligatoriu'},
+        ]
+      ],
     ]);
   }
 }

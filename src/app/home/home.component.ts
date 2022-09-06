@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import {ITitleComponent} from "../shared/Interfaces/ITitleComponent";
 
 @Component({
@@ -6,15 +6,10 @@ import {ITitleComponent} from "../shared/Interfaces/ITitleComponent";
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, ITitleComponent {
-
+export class HomeComponent implements ITitleComponent {
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   get Title(): string {
     return "";
   }
-
 }

@@ -6,25 +6,19 @@ import {DriversRepositoryInMemory} from "../../Repositories/drivers-repository-i
 @Injectable({
   providedIn: 'root'
 })
-export class DriversService extends Service<Driver> implements OnInit{
+export class DriversService extends Service<Driver>{
   constructor(private driverRepository: DriversRepositoryInMemory) {
     super(driverRepository);
   }
-
-  ngOnInit(): void {
-  }
-
   Get(id: number | undefined): Driver | undefined {
     if (id){
       return this.repository.Get(id);
     }
     return undefined;
   }
-
   GetAll(): Driver[] {
     return this.repository.GetAll();
   }
-
   onSubmit(): void {
     if (this._model.id > 0){
       this.onUpdate();

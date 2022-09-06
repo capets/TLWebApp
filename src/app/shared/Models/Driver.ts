@@ -1,6 +1,3 @@
-import {mod} from "ngx-bootstrap/chronos/utils";
-import {concatAll} from "rxjs";
-
 export class Driver{
   id!:number;
   firstName?:string = '';
@@ -30,5 +27,8 @@ export class Driver{
 
   get fullName():string{
     return this.firstName + ' ' + this.lastName;
+  }
+  get name():string|undefined{
+    return this.fullName;
   }
 }

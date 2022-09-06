@@ -1,5 +1,5 @@
-import {EventEmitter, Injectable, Injector, Input, OnInit} from "@angular/core";
-import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
+import {EventEmitter, Injectable, Input, OnInit} from "@angular/core";
+import {BsModalService} from "ngx-bootstrap/modal";
 import {DatePickerConfig} from "../../Helpers/date-picker-config";
 import {BsLocaleService} from "ngx-bootstrap/datepicker";
 import {Service} from "./service";

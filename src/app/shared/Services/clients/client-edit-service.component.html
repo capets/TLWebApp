@@ -1,0 +1,97 @@
+<modal-component
+  [title]="model.id > 0 ? 'Editeaza client' : 'Adauga client'"
+  [form]="form"
+  (onDecline)="decline()"
+  (onSubmit)="confirmSubmit()">
+  <form class="form" novalidate #form="ngForm" [ngFormOptions]="{updateOn: 'blur'}">
+    <div class="container">
+      <div class="row mb-2">
+        <div class="col">
+          <label for="name" class="form-label required">Nume</label>
+          <input id="name" name="clientName" class="form-control"
+                 [(ngModel)]="model.name"
+                 required
+                  #name="ngModel">
+          <app-validation-summary [appValidationModel]="name"></app-validation-summary>
+        </div>
+        <div class="col">
+          <label for="legalAddress" class="form-label">Adresa juridica</label>
+          <textarea id="legalAddress" name="legalAddress" class="form-control"
+                    [(ngModel)]="model.legalAddress"></textarea>
+        </div>
+        <div class="col">
+          <label for="postalAddress" class="form-label">Adresa postala</label>
+          <textarea id="postalAddress" name="postalAddress" class="form-control" [(ngModel)]="model.postalAddress"></textarea>
+        </div>
+      </div>
+
+      <div class="row mb-2">
+
+        <div class="col">
+          <label for="fiscalCode" class="form-label">Cod fiscal</label>
+          <div class="input-group">
+            <input type="text"
+                   id="fiscalCode" name="fiscalCode"
+                   class="form-control"
+                   [(ngModel)]="model.fiscalCode">
+          </div>
+        </div>
+        <div class="col">
+          <label for="vat" class="form-label">TVA</label>
+          <div class="input-group">
+            <input type="text"
+                   id="vat" name="vat"
+                   class="form-control"
+                   [(ngModel)]="model.Vat">
+          </div>
+        </div>
+        <div class="col">
+          <label for="iban" class="form-label">Iban</label>
+          <div class="input-group">
+            <input type="text"
+                   id="iban" name="iban"
+                   class="form-control"
+                   [(ngModel)]="model.Iban">
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-2">
+        <div class="col">
+          <label for="tel" class="form-label">Tel</label>
+          <div class="input-group">
+            <input type="text"
+                   id="tel" name="tel"
+                   class="form-control"
+                   [(ngModel)]="model.tel">
+          </div>
+        </div>
+
+        <div class="col">
+          <label for="fax" class="form-label">Fax</label>
+          <div class="input-group">
+            <input type="text"
+                   id="fax" name="fax"
+                   class="form-control"
+                   [(ngModel)]="model.fax">
+          </div>
+        </div>
+
+        <div class="col">
+          <label for="ceo" class="form-label">Director</label>
+          <div class="input-group">
+            <input type="text"
+                   id="ceo" name="ceo"
+                   class="form-control"
+                   [(ngModel)]="model.Ceo">
+          </div>
+        </div>
+
+
+
+
+
+      </div>
+    </div>
+  </form>
+</modal-component>

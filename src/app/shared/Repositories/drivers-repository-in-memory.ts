@@ -17,7 +17,7 @@ export class DriversRepositoryInMemory implements IRepository<Driver, number>{
         lastName: 'Ion',
         nationalId: '123636355584259',
         birthDate: new Date(1982,5,11),
-        licExpDate: new Date(2027, 10, 10),
+        licExpDate: new Date(2021, 10, 10),
         tahoExpDate: new Date(2023, 8, 25),
         medExpDate: new Date(2023, 11, 22),
         nationalExpDate: new Date(2028, 10, 30),

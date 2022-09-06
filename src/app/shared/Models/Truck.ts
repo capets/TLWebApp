@@ -14,7 +14,6 @@ export class Truck extends Vehicle{
   get vehicleCategoryId():number{
     return this._vehicleCategoryId;
   }
-
   set vehicleCategoryId(value){
     this._vehicleCategoryId = value;
   }

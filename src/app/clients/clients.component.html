@@ -1,1 +1,41 @@
-<p>clients works!</p>
+<div class="row">
+  <div class="col-12">
+    <table class="table align-middle table-hover">
+      <thead class="table-light">
+      <tr>
+        <th>#</th>
+        <th>Nume</th>
+        <th>Adresa juridica</th>
+        <th>Adresa postala</th>
+        <th>Cod fiscal</th>
+        <th>Tva</th>
+        <th>Iban</th>
+        <th>tel</th>
+        <th>fax</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let client of clients; let idx = index;"
+          (click)="onEditClick(client)"
+          [ngClass]="client.id == this.selectedClientId ? 'active' : ''">
+        <th scope="row">{{idx + 1}}</th>
+        <td>{{client.name}}</td>
+        <td>{{client.postalAddress}}</td>
+        <td>{{client.legalAddress }}</td>
+        <td>{{client.fiscalCode }}</td>
+        <td>{{client.Vat }}</td>
+        <td>{{client.Iban }}</td>
+        <td>{{client.tel }}</td>
+        <td>{{client.fax }}</td>
+        <td class="col-1 text-center">
+          <button id="deleteButton" class="btn btn-danger" (click)="onDeleteClick(client); $event.stopPropagation()">
+            <span class="oi oi-trash" aria-hidden="true"></span>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-primary" (click)="onAddClick()">Adauga</button>
+  </div>
+</div>

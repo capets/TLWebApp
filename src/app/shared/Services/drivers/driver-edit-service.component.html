@@ -7,13 +7,20 @@
     <div class="container">
       <div class="row mb-2">
         <div class="col">
-          <label for="lastName" class="form-label">Nume</label>
-          <input id="lastName" name="lastName" class="form-control" [(ngModel)]="model.lastName"/>
+          <label for="lastName" class="form-label required">Nume</label>
+          <input id="lastName" name="lastName" class="form-control"
+                 [(ngModel)]="model.lastName"
+                 required
+                  #lastName="ngModel">
+          <app-validation-summary [appValidationModel]="lastName"></app-validation-summary>
         </div>
         <div class="col">
-          <label for="firstName" class="form-label">Prenume</label>
-          <input id="firstName" name="firstName" class="form-control"
-                 [(ngModel)]="model.firstName">
+          <label for="firstName" class="form-label required">Prenume</label>
+          <input id="firstName" name="firstName" class="form-control "
+                 [(ngModel)]="model.firstName"
+                 required
+                  #firstName="ngModel">
+          <app-validation-summary [appValidationModel]="firstName"></app-validation-summary>
         </div>
         <div class="col">
           <label for="nationalId" class="form-label">Idnp</label>
