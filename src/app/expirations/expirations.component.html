@@ -1,5 +1,5 @@
 <div>
-  <div class="alert alert-warning" role="alert">
+  <div class="alert alert-warning shadow " role="alert">
     Expirari
   </div>
   <hr>
@@ -9,7 +9,9 @@
         class="btn btn-link btn-block justify-content-between d-flex w-100 shadow-none text-decoration-none"
         accordion-heading type="button">
         <div class="pull-left float-left position-relative">{{group}}
-          <span class="position-absolute top-0 start-100 translate-middle-y badge rounded-pill bg-warning">{{getTotalByGroup(group)}}</span>
+          <span class="position-absolute top-0 start-100 translate-middle-y badge rounded-pill bg-warning shadow ">
+            {{getTotalByGroup(group)}}
+          </span>
         </div>
       </button>
             <accordion-group
@@ -18,7 +20,9 @@
                 class="btn btn-link btn-block justify-content-between d-flex w-100 shadow-none text-decoration-none"
                 accordion-heading type="button">
                 <div class="pull-left float-left position-relative"> {{elementGroup.name}}
-                  <span class="position-absolute top-0 start-100 translate-middle-y badge rounded-pill bg-warning">{{elementGroup.values?.length}}</span>
+                  <span class="position-absolute top-0 start-100 translate-middle-y badge rounded-pill bg-warning shadow ">
+                    {{elementGroup.values?.length}}
+                  </span>
                 </div>
               </button>
 
