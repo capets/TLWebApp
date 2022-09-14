@@ -7,6 +7,8 @@
         <th>Marca</th>
         <th>Numar</th>
         <th>Vin</th>
+        <th>Categorie</th>
+        <th>Tip</th>
         <th>Certificat ITP</th>
         <th>Certificat CEMT</th>
         <th>Rca</th>
@@ -26,6 +28,8 @@
         <td>{{truck.brand}}</td>
         <td>{{truck.plateNumber}}</td>
         <td>{{truck.vin}}</td>
+        <td>{{truck.vehicleCategory?.name}}</td>
+        <td>{{truck.autoType?.name}}</td>
         <td [ngClass]="getCellColor(truck.itpExpDate)">{{truck.itpExpDate | date:'dd.MM.yyyy'}}</td>
         <td [ngClass]="getCellColor(truck.certCemtExpDate)">{{truck.certCemtExpDate | date:'dd.MM.yyyy'}}</td>
         <td [ngClass]="getCellColor(truck.certRcaExpDate)">{{truck.certRcaExpDate | date:'dd.MM.yyyy'}}</td>

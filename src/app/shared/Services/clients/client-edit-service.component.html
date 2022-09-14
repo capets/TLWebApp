@@ -1,5 +1,5 @@
 <modal-component
-  [title]="model.id > 0 ? 'Editeaza client' : 'Adauga client'"
+  [title]="model.id > 0 ? 'Editare client' : 'Adauga client'"
   [form]="form"
   (onDecline)="decline()"
   (onSubmit)="confirmSubmit()">
@@ -37,12 +37,12 @@
           </div>
         </div>
         <div class="col">
-          <label for="vat" class="form-label">TVA</label>
+          <label for="vat" class="form-label">Tva</label>
           <div class="input-group">
             <input type="text"
                    id="vat" name="vat"
                    class="form-control"
-                   [(ngModel)]="model.Vat">
+                   [(ngModel)]="model.vat">
           </div>
         </div>
         <div class="col">
@@ -51,7 +51,7 @@
             <input type="text"
                    id="iban" name="iban"
                    class="form-control"
-                   [(ngModel)]="model.Iban">
+                   [(ngModel)]="model.iban">
           </div>
         </div>
       </div>
@@ -83,15 +83,36 @@
             <input type="text"
                    id="ceo" name="ceo"
                    class="form-control"
-                   [(ngModel)]="model.Ceo">
+                   [(ngModel)]="model.ceo">
           </div>
         </div>
-
-
-
-
-
       </div>
+
+      <div class="row mb-2">
+        <div class="col-3">
+          <div class="form-check">
+            <input class="form-check-input"
+                   type="checkbox"
+                   value=""
+                   id="isExporter"
+                   name="isExporter"
+            [(ngModel)]="model.isExporter">
+            <label class="form-check-label" for="isExporter">Este Exportator</label>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="form-check">
+            <input class="form-check-input"
+                   type="checkbox"
+                   value=""
+                   id="isRecipient"
+                   name="isRecipient"
+                   [(ngModel)]="model.isRecipient">
+            <label class="form-check-label" for="isRecipient">Este Destinatar</label>
+          </div>
+        </div>
+      </div>
+
     </div>
   </form>
 </modal-component>

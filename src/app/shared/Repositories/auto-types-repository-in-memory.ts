@@ -27,7 +27,8 @@ export class AutoTypesRepositoryInMemory implements IRepository<AutoType, number
     }));
   }
   Add(item: AutoType): void {
-    const id = Math.max(...this._autoTypes.map(x => x.id));
+    const id = this._autoTypes.length > 0
+      ? Math.max(...this._autoTypes.map(x => x.id)) : 0;
     item.id = id + 1;
     this._autoTypes.push(item);
   }

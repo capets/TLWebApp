@@ -13,7 +13,6 @@ import {TruckDeleteService} from "../shared/Services/trucks/truck-delete-service
 })
 export class TrucksComponent implements OnInit, ITitleComponent {
   trucks:Truck[] = [];
-  dialogTitle: any;
   selectedTruckId: number = 0;
 
   constructor(public trucksService: TrucksService,
@@ -30,14 +29,12 @@ export class TrucksComponent implements OnInit, ITitleComponent {
   }
 
   onDeleteClick(item: Truck ) {
-    this.dialogTitle = 'Eliminare camion';
     this.trucksService.activeModel = item;
     this.deleteService.delete('Eliminare Remorca', `Esti sigur ca doresti sa elimini remorca ${item.plateNumber}?`);
   }
 
   onEditClick(item:Truck) {
     this.selectedTruckId = item.id;
-    this.dialogTitle = 'Editare camion';
     this.trucksService.activeModel = Object.assign(new Truck(), item);
     this.truckEditService.edit().subscribe(x => this.selectedTruckId = 0);
   }
@@ -47,7 +44,6 @@ export class TrucksComponent implements OnInit, ITitleComponent {
   }
 
   onAddClick() {
-    this.dialogTitle = 'Adauga camion';
     this.trucksService.activeModel = new Truck();
     this.truckEditService.edit();
   }

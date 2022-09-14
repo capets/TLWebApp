@@ -4,11 +4,14 @@ export class Client{
   legalAddress!:string;
   postalAddress!:string;
   fiscalCode!:string;
-  Vat!:string;
-  Iban!:string;
+  vat!:string;
+  iban!:string;
   tel!:string;
   fax!:string;
-  Ceo!:string;
+  ceo!:string;
+  isExporter!: boolean;
+  isRecipient!: boolean;
+
 constructor(model?:any) {
   if (model){
     this.id = model.id;
@@ -16,11 +19,13 @@ constructor(model?:any) {
     this.legalAddress = model.legalAddress;
     this.postalAddress = model.postalAddress;
     this.fiscalCode = model.fiscalCode;
-    this.Vat = model.Vat;
-    this.Iban = model.Iban;
+    this.vat = model.Vat;
+    this.iban = model.Iban;
     this.tel = model.tel;
     this.fax = model.fax;
-    this.Ceo = model.Ceo;
+    this.ceo = model.Ceo;
+    this.isExporter = model.isExporter;
+    this.isRecipient = model.isRecipient;
   }
 }
 }

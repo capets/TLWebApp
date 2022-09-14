@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { NavmenuComponent } from './navmenu/navmenu.component';
 import { TopbarComponent } from './topbar/topbar.component';
 import { DriversComponent } from './drivers/drivers.component';
-import { OrdersComponent } from './orders/orders.component';
+import { RoutesComponent } from './routes/routes.component';
 import { TrucksComponent } from './trucks/trucks.component';
 import { TrailsComponent } from './trails/trails.component';
 import { ClientsComponent } from './clients/clients.component';
@@ -23,10 +23,14 @@ import { ValidationModelDirective } from './shared/Validation/validation-summary
 import { DriverEditServiceComponent } from './shared/Services/drivers/driver-edit-service.component';
 import {ModalComponent} from "./shared/Services/base/modal-component";
 import { ClientEditServiceComponent } from './shared/Services/clients/client-edit-service.component';
-import { ExpirationCheckServiceComponent } from './shared/Services/validity/expiration-check-service-component';
 import {AccordionModule} from "ngx-bootstrap/accordion";
 import { ExpirationsComponent } from './expirations/expirations.component';
 import { AgendaComponent } from './agenda/agenda.component';
+import { SplitterModule } from '@syncfusion/ej2-angular-layouts';
+import { RouteEditServiceComponent } from './shared/Services/routes/route-edit-service.component';
+import { RoutesAndOrdersComponent } from './routes-and-orders/routes-and-orders.component';
+import { OrdersComponent } from './orders/orders.component';
+import { OrderEditServiceComponent } from './shared/Services/orders/order-edit-service.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,7 @@ import { AgendaComponent } from './agenda/agenda.component';
     NavmenuComponent,
     TopbarComponent,
     DriversComponent,
-    OrdersComponent,
+    RoutesComponent,
     TrucksComponent,
     TrailsComponent,
     ClientsComponent,
@@ -47,9 +51,12 @@ import { AgendaComponent } from './agenda/agenda.component';
     DriverEditServiceComponent,
     ModalComponent,
     ClientEditServiceComponent,
-    ExpirationCheckServiceComponent,
     ExpirationsComponent,
-    AgendaComponent
+    AgendaComponent,
+    RouteEditServiceComponent,
+    RoutesAndOrdersComponent,
+    OrdersComponent,
+    OrderEditServiceComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +65,8 @@ import { AgendaComponent } from './agenda/agenda.component';
     BsDatepickerModule,
     BrowserAnimationsModule,
     ModalModule.forRoot(),
-    AccordionModule
+    AccordionModule,
+    SplitterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

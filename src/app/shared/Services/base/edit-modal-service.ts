@@ -30,11 +30,11 @@ export abstract class EditModalService<T> implements OnInit{
   }
 
   onFocusIn(input: any){
-    EditHelper.clearIfZero(input);
+    EditHelper.clearIfZero(input.target);
   }
 
   onFocusOut(input: any){
-    EditHelper.zeroIfClear(input);
+    EditHelper.zeroIfClear(input.target);
   }
 
   getColor(date: any){

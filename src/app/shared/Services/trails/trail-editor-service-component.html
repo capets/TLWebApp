@@ -1,5 +1,5 @@
 <modal-component
-  [title]="model.id > 0 ? 'Editeaza remorca' : 'Adauga remorca'"
+  [title]="model.id > 0 ? 'Editare remorca' : 'Adauga remorca'"
   [form]="form"
   (onDecline)="decline()"
   (onSubmit)="confirmSubmit()">
@@ -42,30 +42,30 @@
       <div class="row mb-2">
         <div class="col">
           <label for="length" class="form-label">Lungime</label>
-          <input #lengthInput id="length" name="length" class="form-control"
+          <input id="length" name="length" class="form-control"
                  [(ngModel)]="model.length"
-                 (focusin)="onFocusIn(lengthInput)"
-                 (focusout)="onFocusOut(lengthInput)"
+                 (focusin)="onFocusIn($event)"
+                 (focusout)="onFocusOut($event)"
                  #length="ngModel"
                  pattern="{{validationHelper.Pattern.Numbers}}">
           <app-validation-summary [appValidationModel]="length"></app-validation-summary>
         </div>
         <div class="col">
           <label for="width" class="form-label">Latime</label>
-          <input #widthInput id="width" name="width" class="form-control"
+          <input id="width" name="width" class="form-control"
                  [(ngModel)]="model.width"
-                 (focusin)="onFocusIn(widthInput)"
-                 (focusout)="onFocusOut(widthInput)"
+                 (focusin)="onFocusIn($event)"
+                 (focusout)="onFocusOut($event)"
                  #width="ngModel"
                  pattern="{{validationHelper.Pattern.Numbers}}">
           <app-validation-summary [appValidationModel]="width"></app-validation-summary>
         </div>
         <div class="col">
           <label for="height" class="form-label">Inaltime</label>
-          <input #heightInput id="height" name="height" class="form-control"
+          <input id="height" name="height" class="form-control"
                  [(ngModel)]="model.height"
-                 (focusin)="onFocusIn(heightInput)"
-                 (focusout)="onFocusOut(heightInput)"
+                 (focusin)="onFocusIn($event)"
+                 (focusout)="onFocusOut($event)"
                  #height="ngModel"
                  pattern="{{validationHelper.Pattern.Numbers}}">
           <app-validation-summary [appValidationModel]="height"></app-validation-summary>

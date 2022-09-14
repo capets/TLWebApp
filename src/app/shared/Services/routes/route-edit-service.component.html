@@ -1,0 +1,86 @@
+<modal-component
+  [title]="model.id > 0 ? 'Editare cursa' : 'Adauga cursa'"
+  [form]="form"
+  (onDecline)="decline()"
+  (onSubmit)="confirmSubmit()">
+  <form class="form" novalidate #form="ngForm" [ngFormOptions]="{updateOn: 'blur'}">
+    <div class="container">
+      <div class="row mb-2">
+        <div class="col">
+          <label for="wayBill" class="form-label required">Foaie Parcurs</label>
+          <input id="wayBill" name="wayBill" class="form-control"
+                 [(ngModel)]="model.wayBill"
+                 required
+                 #wayBill="ngModel">
+          <app-validation-summary [appValidationModel]="wayBill"></app-validation-summary>
+        </div>
+        <div class="col">
+          <label for="openDate" class="form-label required">Data</label>
+          <input id="openDate" name="openDate" class="form-control "
+                 [(ngModel)]="model.openDate"
+                 bsDatepicker
+                 [bsConfig]="pickerConfig.get()"
+                 required
+                 #openDate="ngModel">
+          <app-validation-summary [appValidationModel]="openDate"></app-validation-summary>
+        </div>
+        <div class="col">
+          <label for="truckId" class="form-label">Camion</label>
+          <select id="truckId" name="truckId"
+                  class="form-control form-select"
+                  [(ngModel)]="model.truckId">
+          <option *ngFor="let truck of trucks"
+                  [ngValue]="truck.id">{{truck.plateNumber}}</option>
+        </select>
+        </div>
+        <div class="col">
+          <label for="trailId" class="form-label">Remorca</label>
+          <select id="trailId" name="trailId"
+                  class="form-control form-select"
+                  [(ngModel)]="model.trailId">
+          <option *ngFor="let trail of trails"
+                  [ngValue]="trail.id">{{trail.plateNumber}}</option>
+        </select>
+        </div>
+
+      </div>
+      <div class="row mb-2">
+        <div class="col">
+          <label for="driverId" class="form-label">Sofer</label>
+          <select id="driverId" name="driverId"
+                  class="form-control form-select"
+                  [(ngModel)]="model.driverId">
+            <option *ngFor="let driver of drivers"
+                    [ngValue]="driver.id">{{driver.fullName}}</option>
+          </select>
+        </div>
+        <div class="col">
+          <label for="driverId2" class="form-label">Sofer 2</label>
+          <select id="driverId2" name="driverId2"
+                  class="form-control form-select"
+                  [(ngModel)]="model.driverId2">
+            <option value="0">---</option>
+            <option *ngFor="let driver of drivers"
+                    [ngValue]="driver.id">{{driver.fullName}}</option>
+          </select>
+        </div>
+        <div class="col">
+          <label for="statusId" class="form-label">Statut</label>
+          <select id="statusId" name="statusId"
+                  class="form-control form-select"
+                  [(ngModel)]="model.statusId">
+            <option *ngFor="let status of statuses"
+                    [ngValue]="status.id">{{status.name}}</option>
+          </select>
+        </div>
+
+
+
+      </div>
+
+
+
+
+    </div>
+  </form>
+</modal-component>

@@ -20,7 +20,8 @@ export class TrailCategoriesRepositoryInMemory implements IRepository<TrailCateg
     this._trailCategories.push(category);
   }
   Add(item: TrailCategory): void {
-    const id = Math.max(...this._trailCategories.map(x => x.id));
+    const id = this._trailCategories.length > 0
+      ? Math.max(...this._trailCategories.map(x => x.id)) : 0;
     item.id = id + 1;
     this._trailCategories.push(item);
   }

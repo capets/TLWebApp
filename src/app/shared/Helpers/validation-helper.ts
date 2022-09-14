@@ -152,6 +152,64 @@ export class ValidationHelper {
           {type: 'required', message: 'Campul este obligatoriu'},
         ]
       ],
+      ['wayBill',
+        [
+          {type: 'required', message: 'Campul este obligatoriu'},
+        ]
+      ],
+      ['openDate',
+        [
+          {type: 'required', message: 'Campul este obligatoriu'},
+          {type: 'bsDate', message: 'Data incorecta'}
+        ]
+      ],
+      ['orderDate',
+        [
+          {type: 'required', message: 'Campul este obligatoriu'},
+          {type: 'bsDate', message: 'Data incorecta'}
+        ]
+      ],
+      ['loadingDate',
+        [
+          {type: 'required', message: 'Campul este obligatoriu'},
+          {type: 'bsDate', message: 'Data incorecta'}
+        ]
+      ],
+      ['orderNumber',
+        [
+          {type: 'required', message: 'Campul este obligatoriu'},
+        ]
+      ],
+      ['cargoVolume',
+        [
+          {type: 'required', message: 'Campul este obligatoriu'},
+          {type: 'pattern', message: 'Introdu un numar'}
+        ]
+      ],
+      ['cargoWeight',
+        [
+          {type: 'required', message: 'Campul este obligatoriu'},
+          {type: 'pattern', message: 'Introdu un numar'}
+        ]
+      ],
+      ['pallets',
+        [
+          {type: 'required', message: 'Campul este obligatoriu'},
+          {type: 'pattern', message: 'Introdu un numar'}
+        ]
+      ],
+      ['mtl',
+        [
+          {type: 'required', message: 'Campul este obligatoriu'},
+          {type: 'pattern', message: 'Introdu un numar'}
+        ]
+      ],
+      ['price',
+        [
+          {type: 'required', message: 'Campul este obligatoriu'},
+          {type: 'pattern', message: 'Introdu un numar'}
+        ]
+      ],
     ]);
   }
 }

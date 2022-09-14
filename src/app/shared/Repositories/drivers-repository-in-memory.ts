@@ -40,7 +40,8 @@ export class DriversRepositoryInMemory implements IRepository<Driver, number>{
     ));
   }
   Add(item: Driver): void {
-    const id = Math.max(...this._drivers.map(x => x.id));
+    const id = this._drivers.length > 0
+      ? Math.max(...this._drivers.map(x => x.id)) : 0;
     item.id = id + 1;
     this._drivers.push(item);
   }

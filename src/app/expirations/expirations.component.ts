@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Expiration} from "../shared/Models/Expiration";
-import {ExpirationCheckService} from "../shared/Services/validity/expiration-check-service";
+import {ExpirationCheckService} from "../shared/Services/expirations/expiration-check-service";
 
 @Component({
   selector: 'app-expirations',

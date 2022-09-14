@@ -1,0 +1,191 @@
+<modal-component
+  [title]="model.id > 0 ? 'Editare comanda' : 'Adauga comanda'"
+  [form]="form"
+  (onDecline)="decline()"
+  (onSubmit)="confirmSubmit()">
+  <form class="form" novalidate
+        #form="ngForm"
+        [ngFormOptions]="{updateOn: 'blur'}">
+    <div class="container" >
+      <div class="row mb-2">
+        <div class="col">
+          <label for="orderNumber" class="form-label required">Numar</label>
+          <input id="orderNumber" name="orderNumber" class="form-control"
+                 [(ngModel)]="model.orderNumber"
+                 required
+                 #orderNumber="ngModel">
+          <app-validation-summary [appValidationModel]="orderNumber"></app-validation-summary>
+        </div>
+        <div class="col">
+          <label for="orderDate" class="form-label required">Data</label>
+          <input id="orderDate" name="orderDate" class="form-control "
+                 placeholder="Data comanda"
+                 bsDatepicker
+                 [bsConfig]="pickerConfig.get()"
+                 [(ngModel)]="model.orderDate"
+                 required
+                 #orderDate="ngModel">
+          <app-validation-summary [appValidationModel]="orderDate"></app-validation-summary>
+        </div>
+        <div class="col">
+          <label for="clientId" class="form-label required">Client</label>
+          <select id="clientId" name="client" class="form-control form-select"
+                  [(ngModel)]="model.clientId"
+                  required>
+            <option *ngFor="let client of clients"
+                    [ngValue]="client.id">{{client.name}}</option>
+          </select>
+        </div>
+
+      </div>
+      <div class="row mb-2">
+        <div class="col">
+          <label for="exporterId" class="form-label">Exportator</label>
+          <select id="exporterId" name="exporter" class="form-control form-select"
+                  [(ngModel)]="model.exporterId">
+            <option *ngFor="let exporter of exporters"
+                    [ngValue]="exporter.id">{{exporter.name}}</option>
+          </select>
+        </div>
+        <div class="col">
+          <label for="recipientId" class="form-label">Destinatar</label>
+          <select id="recipientId" name="recipient" class="form-control form-select"
+                  [(ngModel)]="model.recipientId">
+            <option *ngFor="let recipient of recipients"
+                    [ngValue]="recipient.id">{{recipient.name}}</option>
+          </select>
+        </div>
+        <div class="col">
+          <label for="loadingDate" class="form-label required">Data Incarcare</label>
+          <input id="loadingDate" name="loadingDate" class="form-control "
+                 placeholder="Data incarcare"
+                 bsDatepicker
+                 [bsConfig]="pickerConfig.get()"
+                 [(ngModel)]="model.loadingDate"
+                 required
+                 #loadingDate="ngModel">
+          <app-validation-summary [appValidationModel]="loadingDate"></app-validation-summary>
+        </div>
+      </div>
+      <div class="row mb-2">
+
+        <div class="col">
+          <label for="loadingAddress" class="form-label">Adresa Incarcare</label>
+          <textarea id="loadingAddress" name="loadingAddress" class="form-control"
+                    [(ngModel)]="model.loadingAddress"></textarea>
+        </div>
+        <div class="col">
+          <label for="unloadingAddress" class="form-label">Adresa Descarcare</label>
+          <textarea id="unloadingAddress" name="unloadingAddress" class="form-control"
+                    [(ngModel)]="model.unloadingAddress"></textarea>
+        </div>
+
+      </div>
+      <div class="row mb-2">
+        <div class="col">
+          <label for="cargoType" class="form-label">Tip Marfa</label>
+          <input id="cargoType" name="cargoType" class="form-control"
+                    [(ngModel)]="model.cargoType" >
+        </div>
+        <div class="col">
+          <label for="cargoVolume" class="form-label">Volum</label>
+          <input id="cargoVolume" name="cargoVolume" class="form-control"
+                 [(ngModel)]="model.cargoVolume"
+                 (focusin)="onFocusIn($event)"
+                 (focusout)="onFocusOut($event)"
+                 pattern="{{validationHelper.Pattern.Numbers}}"
+                #cargoVolume="ngModel">
+          <app-validation-summary [appValidationModel]="cargoVolume"></app-validation-summary>
+        </div>
+        <div class="col">
+          <label for="cargoWeight" class="form-label">Greutate</label>
+          <input id="cargoWeight" name="cargoWeight" class="form-control"
+                 [(ngModel)]="model.cargoWeight"
+                 (focusin)="onFocusIn($event)"
+                 (focusout)="onFocusOut($event)"
+                 pattern="{{validationHelper.Pattern.Numbers}}"
+                  #cargoWeight="ngModel">
+          <app-validation-summary [appValidationModel]="cargoWeight"></app-validation-summary>
+        </div>
+        <div class="col">
+          <label for="pallets" class="form-label">Paleti</label>
+          <input id="pallets" name="pallets" class="form-control"
+                 [(ngModel)]="model.pallets"
+                 (focusin)="onFocusIn($event)"
+                 (focusout)="onFocusOut($event)"
+                 pattern="{{validationHelper.Pattern.Numbers}}"
+                 #pallets="ngModel">
+          <app-validation-summary [appValidationModel]="pallets"></app-validation-summary>
+        </div>
+        <div class="col">
+          <label for="mtl" class="form-label">MtL</label>
+          <input id="mtl" name="mtl" class="form-control"
+                 (focusin)="onFocusIn($event)"
+                 (focusout)="onFocusOut($event)"
+                 [(ngModel)]="model.mtl"
+                 pattern="{{validationHelper.Pattern.Numbers}}"
+                 #mtl="ngModel">
+          <app-validation-summary [appValidationModel]="mtl"></app-validation-summary>
+        </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col">
+          <label for="deliveryDate" class="form-label">Data Livrare</label>
+          <input id="deliveryDate" name="deliveryDate" class="form-control "
+                 placeholder="Data incarcare"
+                 bsDatepicker
+                 [bsConfig]="pickerConfig.get()"
+                 [(ngModel)]="model.deliveryDate"
+                 #deliveryDate="ngModel">
+          <app-validation-summary [appValidationModel]="deliveryDate"></app-validation-summary>
+        </div>
+        <div class="col">
+          <label for="price" class="form-label">Pret</label>
+          <input id="price" name="price" class="form-control"
+                 (focusin)="onFocusIn($event)"
+                 (focusout)="onFocusOut($event)"
+                 [(ngModel)]="model.price"
+                 pattern="{{validationHelper.Pattern.Numbers}}"
+                 #price="ngModel">
+          <app-validation-summary [appValidationModel]="price"></app-validation-summary>
+        </div>
+        <div class="col">
+          <label for="currency" class="form-label">Valuta</label>
+          <input id="currency" name="currency" class="form-control"
+                 [(ngModel)]="model.currency" >
+        </div>
+
+      </div>
+      <div class="row mb-2">
+        <div class="col">
+          <label for="miniRoute" class="form-label">Ruta</label>
+          <input id="miniRoute" name="miniRoute" class="form-control"
+                 [(ngModel)]="model.miniRoute">
+        </div>
+        <div class="col">
+          <label for="categoryId" class="form-label">Categorie</label>
+          <select id="categoryId" name="categoryId" class="form-control form-select"
+                  [(ngModel)]="model.categoryId">
+            <option *ngFor="let category of categories"
+                    [ngValue]="category.id">{{category.name}}</option>
+          </select>
+        </div>
+        <div class="col">
+          <label for="routeId" class="form-label">Camion</label>
+          <select id="routeId" name="route" class="form-control form-select"
+                  [(ngModel)]="model.routeId"
+                  [disabled]="isRouteClosed()">
+            <option *ngFor="let route of routes"
+                    [ngValue]="route.id">{{route.truck?.plateNumber}}</option>
+          </select>
+        </div>
+        <div class="col">
+          <label for="reference" class="form-label">Referinta</label>
+          <input id="reference" name="reference" class="form-control"
+                 [(ngModel)]="model.reference" >
+        </div>
+      </div>
+
+    </div>
+  </form>
+</modal-component>

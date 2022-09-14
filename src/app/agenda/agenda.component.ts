@@ -52,7 +52,7 @@ export class AgendaComponent implements OnInit {
     this.tasksService.activeModel = new Task(
       {
         title: this.title,
-        date: this.datePipe.transform( new Date(), 'dd.MM.yyyy')
+        date: this.datePipe.transform( this.selectedDate, 'dd.MM.yyyy')
       });
     this.tasksService.onSubmit();
     this.tasks.push(this.tasksService.activeModel);

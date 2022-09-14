@@ -13,7 +13,6 @@ import {Driver} from "../shared/Models/Driver";
 })
 export class DriversComponent implements OnInit, ITitleComponent {
   drivers:Driver[] = [];
-  dialogTitle: any;
   selectedDriverId: number = 0;
  constructor( public driversService: DriversService,
               private driverEditService: DriverEditServiceComponent,
@@ -28,14 +27,12 @@ export class DriversComponent implements OnInit, ITitleComponent {
   }
 
   onDeleteClick(item: Driver ) {
-    this.dialogTitle = 'Eliminare sofer';
     this.driversService.activeModel = item;
     this.deleteService.delete('Eliminare Sofer', `Esti sigur ca doresti sa elimini soferul ${item.fullName}?`);
   }
 
   onEditClick(item:Driver) {
     this.selectedDriverId = item.id;
-    this.dialogTitle = 'Editare sofer';
     this.driversService.activeModel = Object.assign(new Driver(), item);
     this.driverEditService.edit().subscribe(x => this.selectedDriverId = 0);
   }
@@ -45,7 +42,6 @@ export class DriversComponent implements OnInit, ITitleComponent {
   }
 
   onAddClick() {
-    this.dialogTitle = 'Adauga sofer';
     this.driversService.activeModel = new Driver();
     this.driverEditService.edit();
   }

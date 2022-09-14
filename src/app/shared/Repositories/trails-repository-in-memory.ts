@@ -1,63 +1,76 @@
 import {IRepository} from "../Interfaces/IRepository";
 import {Injectable} from "@angular/core";
 import {Trail} from "../Models/Trail";
+import {AutoTypesRepositoryInMemory} from "./auto-types-repository-in-memory";
+import {TrailCategoriesRepositoryInMemory} from "./trail-categories-repository-in-memory";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TrailsRepositoryInMemory implements IRepository<Trail, number>{
   private readonly _trails: Array<Trail>;
-  constructor() {
-    this._trails = [];
-
-    let trail = new Trail();
-    trail.id = 1;
-    trail.brand = 'Schmitz';
-    trail.plateNumber = 'K111 KK';
-    trail.vin = 'DFR232NDHD6744AS';
-    trail.itpExpDate = new Date(2022,1,1);
-    trail.certCemtExpDate = new Date(2023, 5, 15);
-    trail.certRcaExpDate = new Date(2023, 5, 15);
-    this._trails.push(trail);
-
-    trail = new Trail();
-    trail.id = 2;
-    trail.brand = 'Schwarzmuller';
-    trail.plateNumber = 'H005 GR';
-    trail.vin = 'HYTF26626262SA';
-    trail.itpExpDate = new Date(2022,10,10);
-    trail.certCemtExpDate = new Date(2023, 1, 10);
-    this._trails.push(trail);
-
-    trail = new Trail();
-    trail.id = 3;
-    trail.brand = 'Wecon';
-    trail.plateNumber = 'W405 ER';
-    trail.vin = 'JUUIT53563636GF';
-    trail.itpExpDate = new Date(2023,1,1);
-    trail.certCemtExpDate = new Date(2022, 5, 20);
-    this._trails.push(trail);
-
-    trail = new Trail();
-    trail.id = 4;
-    trail.brand = 'Krone';
-    trail.plateNumber = 'D993 GG';
-    trail.vin = 'JUUIT53563636GF';
-    trail.itpExpDate = new Date(2023,1,1);
-    trail.certCemtExpDate = new Date(2022, 5, 20);
-    this._trails.push(trail);
+  constructor(private trailsCategory: TrailCategoriesRepositoryInMemory,
+              private autoTypesRepository: AutoTypesRepositoryInMemory) {
+    this._trails = [
+      new Trail({
+        id: 1,
+        brand: 'Schmitz',
+        plateNumber: 'K111 KK',
+        vin: 'DFR232NDHD6744AS',
+        trailCategoryId: 1,
+        autoTypeId: 2,
+        itpExpDate: new Date(2022, 1, 1),
+        certCemtExpDate: new Date(2023, 5, 15),
+        certRcaExpDate: new Date(2023, 5, 15)
+      }),
+      new Trail({
+        id: 2,
+        brand: 'Schwarzmuller',
+        plateNumber: 'H005 GR',
+        vin: 'HYTF26626262SA',
+        trailCategoryId: 1,
+        autoTypeId: 1,
+        itpExpDate: new Date(2022,10,10),
+        certCemtExpDate: new Date(2023, 1, 10)
+      }),
+      new Trail({
+        id: 3,
+        brand: 'Wecon',
+        plateNumber: 'W405 ER',
+        vin: 'JUUIT53563636GF',
+        trailCategoryId: 2,
+        autoTypeId: 3,
+        itpExpDate: new Date(2023, 1, 1),
+        certCemtExpDate: new Date(2022, 5, 20)
+      }),
+      new Trail({
+        id: 4,
+        brand: 'Krone',
+        plateNumber: 'D993 GG',
+        vin: 'JUUIT53563636GF',
+        trailCategoryId: 2,
+        autoTypeId: 1,
+        itpExpDate: new Date(2023, 1, 1),
+        certCemtExpDate: new Date(2022, 5, 20)
+      })
+    ];
   }
+
   Add(item: Trail): void {
-    const id = Math.max(...this._trails.map(x => x.id));
+    const id = this._trails.length > 0
+      ? Math.max(...this._trails.map(x => x.id)) : 0;
     item.id = id + 1;
     this._trails.push(item);
   }
 
   Get(id: number): Trail | undefined {
-    return this._trails.find(x => x.id === id);
+    const trail = this._trails.find(x => x.id === id);
+    this.setNavigationProperties(trail);
+    return trail;
   }
 
   GetAll(): Trail[] {
+    this._trails.forEach(x => this.setNavigationProperties(x));
     return this._trails;
   }
 
@@ -76,5 +89,12 @@ export class TrailsRepositoryInMemory implements IRepository<Trail, number>{
       const idx = this._trails.indexOf(old);
       this._trails[idx] = item;
     }
+  }
+
+  private setNavigationProperties(item?: Trail){
+    if(!item) return;
+
+    item.autoType = this.autoTypesRepository.Get(item.autoTypeId);
+    item.trailCategory = this.trailsCategory.Get(item.trailCategoryId);
   }
 }

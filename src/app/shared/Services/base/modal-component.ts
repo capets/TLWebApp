@@ -7,7 +7,7 @@ import {NgForm} from "@angular/forms";
     <div class="modal-header">
       <h5 class="modal-title">{{ title }}</h5>
       <button type="button" class="btn-close"
-              (click)="onDeclineClick()">
+              (click)="onDecline.emit()">
       </button>
     </div>
     <div class="modal-body">
@@ -17,10 +17,10 @@ import {NgForm} from "@angular/forms";
       <button type="button"
               class="btn btn-primary"
               [disabled]="form.invalid"
-              (click)="confirmSubmitClick()">Salveaza</button>
+              (click)="onSubmit.emit()">Salveaza</button>
       <button type="button"
               class="btn btn-secondary"
-              (click)="onDeclineClick()">Anuleaza</button>
+              (click)="onDecline.emit()">Anuleaza</button>
     </div>
   `
 })
@@ -33,11 +33,5 @@ export class ModalComponent {
   constructor() {
     this.onSubmit = new EventEmitter();
     this.onDecline = new EventEmitter();
-  }
-  confirmSubmitClick(){
-    this.onSubmit.emit();
-  }
-  onDeclineClick(){
-    this.onDecline.emit();
   }
 }

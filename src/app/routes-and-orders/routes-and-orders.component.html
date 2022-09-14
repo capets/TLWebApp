@@ -1,0 +1,16 @@
+<div class="orders h-100">
+  <ejs-splitter orientation='Vertical' class="border-0" cssClass="ordersSplitter" >
+    <e-panes>
+      <e-pane min='20%'>
+        <ng-template #content>
+          <app-routes (onRouteSelect)="onRouteSelect($event)"></app-routes>
+        </ng-template>
+      </e-pane>
+      <e-pane min='20%'>
+        <ng-template #content>
+          <app-orders [onRouteSelected]="onRouteSelected"></app-orders>
+        </ng-template>
+      </e-pane>
+    </e-panes>
+  </ejs-splitter>
+</div>

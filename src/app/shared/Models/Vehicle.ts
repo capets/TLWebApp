@@ -1,15 +1,15 @@
 import {AutoType} from "./AutoType";
 
 export class Vehicle{
-  id: number;
-  autoTypeId:number;
+  id!: number;
+  autoTypeId!:number;
   brand?: string;
   plateNumber?: string;
   vin?: string;
-  length: number;
-  height: number;
-  width: number;
-  loadCapacity:number;
+  length!: number;
+  height!: number;
+  width!: number;
+  loadCapacity!:number;
   itpExpDate?: Date;
   certCemtExpDate?: Date;
   certRcaExpDate?: Date;
@@ -17,13 +17,26 @@ export class Vehicle{
   certCVerdeExpDate?: Date;
   certCascoExpDate?: Date;
   certStingExpDate?: Date;
-  constructor() {
-    this.id = 0;
-    this.autoTypeId = 0;
-    this.length = 0;
-    this.height = 0;
-    this.width = 0;
-    this.loadCapacity = 0;
+  autoType?: AutoType;
+  constructor(model?: any) {
+    if (model){
+      this.id = model.id;
+      this.autoTypeId = model.autoTypeId;
+      this.brand = model.brand;
+      this.plateNumber = model.plateNumber;
+      this.vin = model.vin;
+      this.length = model.length;
+      this.height = model.height;
+      this.width = model.width;
+      this.loadCapacity = model.loadCapacity;
+      this.itpExpDate = model.itpExpDate;
+      this.certCemtExpDate = model.certCemtExpDate;
+      this.certRcaExpDate = model.certRcaExpDate;
+      this.certAgrExpDate = model.certAgrExpDate;
+      this.certCVerdeExpDate = model.certCVerdeExpDate;
+      this.certCascoExpDate = model.certCascoExpDate;
+      this.certStingExpDate = model.certStingExpDate;
+    }
   }
 
   get volume(){

@@ -20,7 +20,8 @@ export class VehicleCategoriesRepositoryInMemory implements IRepository<VehicleC
     this._vehicleCategories.push(category);
   }
   Add(item: VehicleCategory): void {
-    const id = Math.max(...this._vehicleCategories.map(x => x.id));
+    const id = this._vehicleCategories.length > 0
+      ? Math.max(...this._vehicleCategories.map(x => x.id)) : 0;
     item.id = id + 1;
     this._vehicleCategories.push(item);
   }

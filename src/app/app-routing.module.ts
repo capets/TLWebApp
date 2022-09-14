@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {DriversComponent} from "./drivers/drivers.component";
-import {OrdersComponent} from "./orders/orders.component";
 import {TrucksComponent} from "./trucks/trucks.component";
 import {TrailsComponent} from "./trails/trails.component";
 import {ClientsComponent} from "./clients/clients.component";
 import {HomeComponent} from "./home/home.component";
+import {RoutesAndOrdersComponent} from "./routes-and-orders/routes-and-orders.component";
 
 const routes: Routes = [
   {
@@ -14,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: 'orders',
-    component: OrdersComponent
+    component: RoutesAndOrdersComponent
   },
   {
     path: 'drivers',

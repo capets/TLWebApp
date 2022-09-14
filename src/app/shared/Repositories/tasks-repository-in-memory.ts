@@ -27,7 +27,8 @@ export class TasksRepositoryInMemory implements IRepository<Task, number>{
     ];
   }
   Add(item: Task): void {
-    const id = Math.max(...this._tasks.map(x => x.id));
+    const id = this._tasks.length > 0
+      ? Math.max(...this._tasks.map(x => x.id)) : 0;
     item.id = id + 1;
     this._tasks.push(item);
   }

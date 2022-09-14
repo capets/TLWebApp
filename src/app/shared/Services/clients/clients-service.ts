@@ -6,7 +6,7 @@ import {ClientsRepositoryInMemory} from "../../Repositories/clients-repository-i
 @Injectable({
   providedIn: 'root'
 })
-export class ClientService extends Service<Client>{
+export class ClientsService extends Service<Client>{
 constructor(private clientRepository: ClientsRepositoryInMemory) {
   super(clientRepository);
 }

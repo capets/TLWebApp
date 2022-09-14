@@ -1,0 +1,64 @@
+  <div class="container-top h-100">
+    <div class="d-flex flex-column h-100">
+      <div class="alert alert-primary shadow-sm d-flex flex-row align-items-center pt-2 pb-2">
+        <div class="col-0 me-2">
+          <label>Statut</label>
+        </div>
+        <div class="col-2">
+          <select class="form-select"
+                  [(ngModel)]="filterStatusId"
+                  (change)="refreshRoutes()">
+            <option *ngFor="let status of statuses"
+                    [ngValue]="status.id">{{status.name}}</option>
+          </select>
+        </div>
+        <div class="col text-center fs-5">Curse</div>
+
+      </div>
+      <div class="d-flex flex-row justify-content-between h-100">
+        <div class="routes-container">
+          <table class="table align-middle table-hover">
+          <thead class="table-light">
+          <tr>
+            <th>#</th>
+            <th>Foaie Parcurs</th>
+            <th>Data</th>
+            <th>Camion</th>
+            <th>Remorca</th>
+            <th>Sofer</th>
+            <th>Mtl</th>
+            <th>Volum</th>
+            <th>Greutate</th>
+            <th>Statut</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let route of routes; let idx = index;"
+              (click)="onRouteSelect.emit(route); selectedRouteId = route.id"
+              (dblclick)="onEditClick(route)"
+              [ngClass]="route.id == this.selectedRouteId ? 'active' : ''">
+            <th scope="row">{{idx + 1}}</th>
+            <td>{{route.wayBill}}</td>
+            <td>{{route.openDate | date:'dd.MM.yyyy'}}</td>
+            <td>{{route.truck?.plateNumber}}</td>
+            <td>{{route.trail?.plateNumber}}</td>
+            <td>{{route.driver?.fullName}}{{route.driver2 ? ' / ' + route.driver2.name : ''}}</td>
+            <td>{{route.mtl}}</td>
+            <td>{{route.volume}}</td>
+            <td>{{route.weight}}</td>
+            <td>{{route.status}}</td>
+
+            <td class="col-1 text-center">
+              <button id="deleteButton" class="btn btn-danger"
+                      (click)="onDelete(route); $event.stopPropagation()">
+                <span class="oi oi-trash" aria-hidden="true"></span>
+              </button>
+          </tr>
+          </tbody>
+          </table>
+          <button class="btn btn-primary" (click)="onAddClick()">Adauga</button>
+        </div>
+      </div>
+    </div>
+  </div>

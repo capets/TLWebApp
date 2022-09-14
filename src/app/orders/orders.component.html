@@ -1,1 +1,44 @@
-<p>orders works!</p>
+<div class="container-bottom">
+  <div class="d-flex flex-column h-100">
+    <div class="alert alert-success shadow-sm text-center fs-5 pt-2 pb-2">Comenzi</div>
+
+    <div class="orders-container">
+      <table class="table align-middle table-hover">
+        <thead class="table-light">
+        <tr>
+          <th>#</th>
+          <th>Cursa</th>
+          <th>Exportator</th>
+          <th>Data Incarcare</th>
+          <th>Camion/Remorca</th>
+          <th>Sofer</th>
+          <th>Numar</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let order of orders; let idx = index;"
+            (click)="onEditClick(order)"
+            [ngClass]="order.id == this.selectedOrderId ? 'active' : ''">
+          <th scope="row">{{idx + 1}}</th>
+          <td>{{order.miniRoute}}</td>
+          <td>{{order.exporter?.name }}</td>
+          <td>{{order.loadingDate | date:'dd.MM.yyyy'}}</td>
+          <td>{{order.route?.truck?.plateNumber}} / {{order.route?.trail?.plateNumber}}</td>
+          <td>{{order.route?.driver?.fullName}}{{order.route?.driver2 ? ' / ' + order.route?.driver2?.fullName : ''}}</td>
+          <td>{{order.orderNumber}}</td>
+
+          <td class="col-1 text-center">
+            <button id="deleteButton" class="btn btn-danger"
+                    (click)="onDelete(order); $event.stopPropagation()">
+              <span class="oi oi-trash" aria-hidden="true"></span>
+            </button>
+        </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-primary"
+              (click)="onAddClick()"
+              [disabled]="(selectedRouteId > 0) === false">Adauga</button>
+    </div>
+  </div>
+</div>

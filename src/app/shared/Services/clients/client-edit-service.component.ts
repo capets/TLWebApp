@@ -4,7 +4,7 @@ import {Client} from "../../Models/Client";
 import {DatePickerConfig} from "../../Helpers/date-picker-config";
 import {BsLocaleService} from "ngx-bootstrap/datepicker";
 import {BsModalService} from "ngx-bootstrap/modal";
-import {ClientService} from "./client-service";
+import {ClientsService} from "./clients-service";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ import {ClientService} from "./client-service";
 })
 export class ClientEditServiceComponent extends EditModalService<Client>{
 
-  constructor(private clientService: ClientService,
+  constructor(private clientService: ClientsService,
               private datePickerConf: DatePickerConfig,
               private localeService: BsLocaleService,
               private modalService: BsModalService) {

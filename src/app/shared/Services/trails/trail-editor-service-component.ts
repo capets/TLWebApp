@@ -5,7 +5,7 @@ import {TrailsService} from "./trails.service";
 import {Trail} from "../../Models/Trail";
 import {BsModalService} from "ngx-bootstrap/modal";
 import {EditModalService} from "../base/edit-modal-service";
-import {TrailCategoriesService} from "../trucks/trail-categories-service";
+import {TrailCategoriesService} from "./trail-categories-service";
 import {AutoTypesService} from "../base/auto-types-service";
 import {TrailCategory} from "../../Models/TrailCategory";
 import {AutoType} from "../../Models/AutoType";

@@ -7,6 +7,8 @@
         <th>Marca</th>
         <th>Numar</th>
         <th>Vin</th>
+        <th>Categorie</th>
+        <th>Tip</th>
         <th>Certificat ITP</th>
         <th>Certificat CEMT</th>
         <th>Rca</th>
@@ -25,6 +27,8 @@
         <td>{{trail.brand}}</td>
         <td>{{trail.plateNumber}}</td>
         <td>{{trail.vin}}</td>
+        <td>{{trail.trailCategory?.name}}</td>
+        <td>{{trail.autoType?.name}}</td>
         <td [ngClass]="getCellColor(trail.itpExpDate)">{{trail.itpExpDate | date:'dd.MM.yyyy'}}</td>
         <td [ngClass]="getCellColor(trail.certCemtExpDate)">{{trail.certCemtExpDate | date:'dd.MM.yyyy'}}</td>
         <td [ngClass]="getCellColor(trail.certRcaExpDate)">{{trail.certRcaExpDate | date:'dd.MM.yyyy'}}</td>
