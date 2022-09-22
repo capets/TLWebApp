@@ -1,24 +1,16 @@
-import {Injectable, OnInit} from '@angular/core';
-import {Service} from "../base/service";
+import {Injectable} from '@angular/core';
 import {Driver} from "../../Models/Driver";
-import {DriversRepositoryInMemory} from "../../Repositories/drivers-repository-in-memory";
+import {RemoteService} from "../base/remote-service";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
-export class DriversService extends Service<Driver>{
-  constructor(private driverRepository: DriversRepositoryInMemory) {
-    super(driverRepository);
+export class DriversService extends RemoteService<Driver>{
+  constructor(private http: HttpClient) {
+    super(Driver,'Drivers', http);
   }
-  Get(id: number | undefined): Driver | undefined {
-    if (id){
-      return this.repository.Get(id);
-    }
-    return undefined;
-  }
-  GetAll(): Driver[] {
-    return this.repository.GetAll();
-  }
+
   onSubmit(): void {
     if (this._model.id > 0){
       this.onUpdate();

@@ -1,12 +1,12 @@
 import {Injectable} from "@angular/core";
-import {Service} from "../base/service";
+import {LocalService} from "../base/local-service";
 import {Task} from "../../Models/Task";
 import {TasksRepositoryInMemory} from "../../Repositories/tasks-repository-in-memory";
 
 @Injectable({
   providedIn:'root'
 })
-export class TasksService extends Service<Task>{
+export class TasksService extends LocalService<Task>{
   constructor(private tasksRepository: TasksRepositoryInMemory) {
     super(tasksRepository);
   }
@@ -19,14 +19,5 @@ export class TasksService extends Service<Task>{
     }
   }
 
-  Get(id: number | undefined): Task | undefined {
-    if (id){
-      return this.repository.Get(id);
-    }
-    return undefined;
-  }
 
-  GetAll(): Task[] {
-    return this.repository.GetAll();
-  }
 }

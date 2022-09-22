@@ -5,6 +5,7 @@ import {Truck} from "../shared/Models/Truck";
 import {ColorByDate} from "../shared/Helpers/color-by-date";
 import {TruckEditorServiceComponent} from "../shared/Services/trucks/truck-editor-service-component";
 import {TruckDeleteService} from "../shared/Services/trucks/truck-delete-service";
+import {subtract} from "ngx-bootstrap/chronos";
 
 @Component({
   selector: 'app-trucks',
@@ -21,7 +22,16 @@ export class TrucksComponent implements OnInit, ITitleComponent {
   }
 
   ngOnInit(): void {
-    this.trucks = this.trucksService.GetAll();
+    this.refreshTrucks();
+    this.trucksService.onChange
+      .subscribe(x => this.refreshTrucks());
+  }
+
+  private refreshTrucks():void{
+    this.trucksService.GetAll()
+      .subscribe(x => {
+        this.trucks = x;
+      });
   }
 
   get Title(): string {

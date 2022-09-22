@@ -28,6 +28,7 @@ export class RoutesComponent implements ITitleComponent, OnInit {
 
   refreshRoutes(): void{
     this.selectedRouteId = 0;
+    this.onRouteSelect.emit();
     this.routes = this.routesService.GetAll()
       .filter(x => this.filterStatusId < 0 || x.statusId === this.filterStatusId);
   }

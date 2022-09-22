@@ -22,7 +22,7 @@ import {Status} from "../../Models/Status";
   templateUrl: './route-edit-service.component.html',
   styleUrls: ['./route-edit-service.component.scss']
 })
-export class RouteEditServiceComponent extends EditModalService<Route> implements AfterViewInit {
+export class RouteEditServiceComponent extends EditModalService<Route> {
   trucks!: Truck[];
   trails!: Trail[];
   drivers!: Driver[];
@@ -42,10 +42,14 @@ export class RouteEditServiceComponent extends EditModalService<Route> implement
     this.modalService.show(RouteEditServiceComponent, {class: 'modal-lg'});
   }
 
-  ngAfterViewInit(): void {
-    this.trucks = this.trucksService.GetAll();
-    this.trails = this.trailsService.GetAll();
-    this.drivers = this.driversService.GetAll();
+  override ngOnInit() {
+    this.trucksService.GetAll()
+      .subscribe(x => this.trucks = x);
+    this.trailsService.GetAll()
+      .subscribe(x => this.trails = x);
+    this.driversService.GetAll()
+      .subscribe(x => this.drivers = x);
     this.statuses = this.statusesService.GetAll();
+    super.ngOnInit();
   }
 }

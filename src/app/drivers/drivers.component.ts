@@ -19,7 +19,14 @@ export class DriversComponent implements OnInit, ITitleComponent {
               private deleteService: DriverDeleteService) {
  }
   ngOnInit(): void {
-   this.drivers = this.driversService.GetAll();
+    this.refreshDrivers();
+    this.driversService.onChange
+      .subscribe(x => this.refreshDrivers());
+  }
+
+  private refreshDrivers(){
+    this.driversService.GetAll()
+      .subscribe( x => this.drivers = x);
   }
 
   get Title(): string {

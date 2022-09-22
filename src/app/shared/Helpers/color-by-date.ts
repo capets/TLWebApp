@@ -7,15 +7,17 @@ export class ColorByDate {
     return this.getColor(InputColors, date);
   }
 
-  private static getColor(colors: any, date:Date ):string{
-    if (date <= new Date()) {
-      return colors.Danger;
-    }
-    if (date <= new Date(new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDay())) {
-      return colors.Warning;
+  private static getColor(colors: any, date: Date): string {
+    if (date) {
+      if (date <= new Date()) {
+        return colors.Danger;
+      }
+      if (date <= new Date(new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDay())) {
+        return colors.Warning;
+      }
     }
     return colors.Success;
-}
+  }
 }
 
 enum TableColors {

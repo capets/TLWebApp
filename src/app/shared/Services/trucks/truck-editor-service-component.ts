@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Injectable} from '@angular/core';
+import {Component, Injectable, OnInit} from '@angular/core';
 import {TrucksService} from "./trucks.service";
 import {Truck} from "../../Models/Truck";
 import {DatePickerConfig} from '../../Helpers/date-picker-config'
@@ -19,8 +19,8 @@ import {ValidationHelper} from "../../Helpers/validation-helper"
   templateUrl: './truck-editor-service-component.html',
   styleUrls: ['./truck-editor-service-component.scss']
 })
-export class TruckEditorServiceComponent extends EditModalService<Truck> implements AfterViewInit  {
-  categories?: VehicleCategory[];
+export class TruckEditorServiceComponent extends EditModalService<Truck> implements OnInit  {
+  categories?: VehicleCategory[] ;
   autoTypes?: AutoType[];
 
   constructor(private trucksService: TrucksService,
@@ -31,16 +31,18 @@ export class TruckEditorServiceComponent extends EditModalService<Truck> impleme
               private modalService: BsModalService,
               public validationHelper: ValidationHelper) {
     super(trucksService, datePickerConf, localeService, modalService);
-    this.model = new Truck();
   }
 
   showModal(): void {
     this.modalService.show(TruckEditorServiceComponent, {class: 'modal-xl'});
   }
 
-  ngAfterViewInit(): void {
-    this.categories = this.vehicleCategoriesService.GetAll();
-    this.autoTypes = this.autoTypesService.GetAll();
+  override ngOnInit(): void {
+    this.vehicleCategoriesService.GetAll()
+      .subscribe(x => this.categories = x);
+    this.autoTypesService.GetAll()
+      .subscribe((x =>  this.autoTypes = x));
+    super.ngOnInit();
   }
 
   get selectedAutoType(): number {

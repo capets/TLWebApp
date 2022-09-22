@@ -1,30 +1,15 @@
-import {Injectable, OnInit} from '@angular/core';
-import {Service} from "../base/service";
+import {Injectable} from '@angular/core';
 import {Trail} from "../../Models/Trail";
-import {TrailsRepositoryInMemory} from "../../Repositories/trails-repository-in-memory";
+import {RemoteService} from "../base/remote-service";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
-export class TrailsService extends Service<Trail> implements OnInit{
-  constructor(private trailRepository: TrailsRepositoryInMemory) {
-    super(trailRepository);
+export class TrailsService extends RemoteService<Trail>{
+  constructor(private http: HttpClient) {
+    super(Trail, 'Trails', http);
   }
-
-  ngOnInit(): void {
-  }
-
-  Get(id: number | undefined): Trail | undefined {
-    if (id){
-      return this.repository.Get(id);
-    }
-    return undefined;
-  }
-
-  GetAll(): Trail[] {
-    return this.repository.GetAll();
-  }
-
   onSubmit(): void {
     if (this._model.id > 0){
       this.onUpdate();

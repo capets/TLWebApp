@@ -22,20 +22,26 @@
           <input id="vin" name="vin" class="form-control" [(ngModel)]="model.vin"/>
         </div>
         <div class="col">
-          <label for="category" class="form-label">Categorie</label>
+          <label for="category" class="form-label required">Categorie</label>
           <select id="category" name="category" class="form-control form-select"
-                  [(ngModel)]="model.trailCategoryId">
+                  [(ngModel)]="model.trailCategoryId"
+                  #category="ngModel"
+                  required>
             <option *ngFor="let category of categories"
                     [ngValue]="category.id">{{category.name}}</option>
           </select>
+          <app-validation-summary [appValidationModel]="category"></app-validation-summary>
         </div>
         <div class="col">
-          <label for="type" class="form-label">Tip</label>
+          <label for="type" class="form-label required">Tip</label>
           <select id="type" name="type" class="form-control form-select"
-                  [(ngModel)]="model.autoTypeId">
+                  [(ngModel)]="model.autoTypeId"
+                  #type="ngModel"
+                  required>
             <option *ngFor="let autoType of autoTypes"
                     [ngValue]="autoType.id">{{autoType.name}}</option>
           </select>
+          <app-validation-summary [appValidationModel]="type"></app-validation-summary>
         </div>
       </div>
 

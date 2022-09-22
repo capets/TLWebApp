@@ -6,9 +6,9 @@ export class Vehicle{
   brand?: string;
   plateNumber?: string;
   vin?: string;
-  length!: number;
-  height!: number;
-  width!: number;
+  length: number = 0;
+  height: number = 0;
+  width: number = 0;
   loadCapacity!:number;
   itpExpDate?: Date;
   certCemtExpDate?: Date;
@@ -30,7 +30,6 @@ export class Vehicle{
       this.width = model.width;
       this.loadCapacity = model.loadCapacity;
       this.itpExpDate = model.itpExpDate;
-      this.certCemtExpDate = model.certCemtExpDate;
       this.certRcaExpDate = model.certRcaExpDate;
       this.certAgrExpDate = model.certAgrExpDate;
       this.certCVerdeExpDate = model.certCVerdeExpDate;

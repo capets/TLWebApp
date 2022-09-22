@@ -38,7 +38,7 @@
       </table>
       <button class="btn btn-primary"
               (click)="onAddClick()"
-              [disabled]="(selectedRouteId > 0) === false">Adauga</button>
+              [disabled]="(selectedRoute && selectedRoute.statusId != 2) === false">Adauga</button>
     </div>
   </div>
 </div>

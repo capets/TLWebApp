@@ -1,12 +1,12 @@
 import {Injectable} from "@angular/core";
-import {Service} from "./service";
+import {LocalService} from "./local-service";
 import {Status} from "../../Models/Status";
 import {StatusRepositoryInMemory} from "../../Repositories/status-repository-in-memory";
 
 @Injectable({
   providedIn:'root'
 })
-export class StatusesServices extends Service<Status>{
+export class StatusesServices extends LocalService<Status>{
   constructor(private statusRepositoryInMemory: StatusRepositoryInMemory) {
     super(statusRepositoryInMemory);
   }
@@ -17,15 +17,5 @@ export class StatusesServices extends Service<Status>{
     else{
       this.onAdd();
     }
-  }
-  Get(id: number | undefined): Status | undefined {
-    if (id){
-      return this.repository.Get(id);
-    }
-    return undefined;
-  }
-
-  GetAll(): Status[] {
-    return this.repository.GetAll();
   }
 }

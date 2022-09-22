@@ -4,6 +4,11 @@
   </div>
   <hr>
   <accordion class="accordion" [isAnimated]="true">
+    <div class="d-flex justify-content-center" *ngIf="waiting">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
     <accordion-group *ngFor="let group of groups">
       <button
         class="btn btn-link btn-block justify-content-between d-flex w-100 shadow-none text-decoration-none"

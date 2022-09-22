@@ -20,7 +20,15 @@ export class TrailsComponent implements OnInit, ITitleComponent {
   }
 
   ngOnInit(): void {
-    this.trails = this.trailsService.GetAll();
+    this.refreshTrails();
+    this.trailsService.onChange
+      .subscribe(x => this.refreshTrails());
+  }
+  private refreshTrails():void{
+    this.trailsService.GetAll()
+      .subscribe(x => {
+        this.trails = x;
+      });
   }
 
   get Title(): string {

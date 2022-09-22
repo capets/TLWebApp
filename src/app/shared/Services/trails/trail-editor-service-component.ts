@@ -39,6 +39,7 @@ export class TrailEditorServiceComponent extends EditModalService<Trail> impleme
 
   ngAfterViewInit(): void {
     this.categories = this.trailCategoriesService.GetAll();
-    this.autoTypes = this.autoTypesService.GetAll();
+    this.autoTypesService.GetAll()
+      .subscribe((x =>  this.autoTypes = x));
   }
 }

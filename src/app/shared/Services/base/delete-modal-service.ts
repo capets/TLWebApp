@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Injectable} from '@angular/core';
 import {BsModalService, ModalOptions} from "ngx-bootstrap/modal";
+import {LocalService} from "./local-service";
 import {Service} from "./service";
 
 @Injectable({
@@ -7,7 +8,7 @@ import {Service} from "./service";
 })
 export class DeleteModalService{
   onDeleteItem= new EventEmitter();
-  constructor(private service: Service<any>,
+  constructor(private service: Service,
               private bvsModalService: BsModalService) {
     this.onDeleteItem = new EventEmitter<any>();
   }
@@ -24,10 +25,6 @@ export class DeleteModalService{
     this.bvsModalService.show<DeleteModalServiceComponent>(DeleteModalServiceComponent, initialState);
     return this.onDeleteItem;
   }
-
-  onDelete(){
-    this.service.onDelete();
-  }
 }
 
 @Component({
@@ -40,16 +37,20 @@ export class DeleteModalService{
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" (click)="modalService?.hide()">Nu</button>
-      <button type="button" class="btn btn-danger" (click)="service?.onDelete();onDeleteItem?.emit();modalService?.hide()">Da</button>
+      <button type="button" class="btn btn-danger" (click)="onDelete();onDeleteItem?.emit();modalService?.hide()">Da</button>
     </div>
   `
 })
 export class DeleteModalServiceComponent {
   title?: string;
   text?: string;
-  service?: Service<any>;
+  service?: Service;
   model?: any;
   modalService?: BsModalService;
   onDeleteItem?: EventEmitter<any>
   constructor() { }
+
+  onDelete() {
+    this.service?.onDelete(this.service.activeModel.id);
+  }
 }

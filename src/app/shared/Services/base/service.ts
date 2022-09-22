@@ -1,30 +1,17 @@
-import {IEditService} from "../../Interfaces/IEditService";
-import {IRepository} from "../../Interfaces/IRepository";
+export abstract class Service {
+  abstract get activeModel(): any;
 
-export abstract class Service<T> implements IEditService{
-  protected _model!: T;
-  protected constructor(protected repository: IRepository<T, any>) {
-  }
+  abstract set activeModel(model: any);
 
-  get activeModel(): T {
-    return this._model;
-  }
+  abstract Get(id: any): any;
 
-  set activeModel(model: T) {
-    this._model = model;
-  }
+  abstract GetAll(): any;
 
-  onDelete(): void {
-    this.repository.Remove(this._model);
-  }
+  abstract onDelete(id: any): void;
+
+  abstract onUpdate(): void;
+
+  abstract onAdd(): void ;
 
   abstract onSubmit(): void;
-
-  onUpdate(){
-    this.repository.Update(this._model);
-  }
-
-  onAdd(): void {
-    this.repository.Add(this._model);
-  }
 }

@@ -2,12 +2,11 @@ import {EventEmitter, Injectable, Input, OnInit} from "@angular/core";
 import {BsModalService} from "ngx-bootstrap/modal";
 import {DatePickerConfig} from "../../Helpers/date-picker-config";
 import {BsLocaleService} from "ngx-bootstrap/datepicker";
-import {Service} from "./service";
 import {EditHelper} from "../../Helpers/edit-helper";
 import {ColorByDate} from "../../Helpers/color-by-date";
 import {defineLocale} from "ngx-bootstrap/chronos";
 import {roLocale} from "ngx-bootstrap/locale";
-
+import {Service} from "./service";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +14,7 @@ import {roLocale} from "ngx-bootstrap/locale";
 export abstract class EditModalService<T> implements OnInit{
   @Input() model!: T;
   editItem= new EventEmitter();
-  protected constructor(private modelsService: Service<T>,
+  protected constructor(private modelsService: Service,
               public pickerConfig: DatePickerConfig,
               private bsLocaleService: BsLocaleService,
               private bsModalService: BsModalService) {
@@ -44,7 +43,8 @@ export abstract class EditModalService<T> implements OnInit{
 
   edit():EventEmitter<any>{
     this.showModal();
-    this.bsModalService?.onHide?.subscribe(x => this.editItem.emit());
+    this.bsModalService?.onHide
+      ?.subscribe(x => this.editItem.emit());
     return this.editItem;
   }
 

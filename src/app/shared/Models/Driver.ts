@@ -1,4 +1,6 @@
-export class Driver{
+import {ITitleComponent} from "../Interfaces/ITitleComponent";
+
+export class Driver implements ITitleComponent{
   id!:number;
   firstName?:string = '';
   lastName?:string = '';
@@ -30,5 +32,9 @@ export class Driver{
   }
   get name():string|undefined{
     return this.fullName;
+  }
+
+  get Title(): string {
+    return "Driver";
   }
 }

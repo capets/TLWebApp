@@ -1,30 +1,15 @@
 import {Injectable, OnInit} from '@angular/core';
 import {Truck} from "../../Models/Truck";
-import {TrucksRepositoryInMemory} from "../../Repositories/trucks-repository-in-memory";
-import {Service} from "../base/service";
+import {RemoteService} from "../base/remote-service";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
-export class TrucksService extends Service<Truck> implements OnInit{
-  constructor(private truckRepository: TrucksRepositoryInMemory) {
-    super(truckRepository);
+export class TrucksService extends RemoteService<Truck>{
+  constructor(private http: HttpClient) {
+    super(Truck,'Trucks', http);
   }
-
-  ngOnInit(): void {
-  }
-
-  Get(id: number | undefined): Truck | undefined {
-    if (id){
-      return this.repository.Get(id);
-    }
-    return undefined;
-  }
-
-  GetAll(): Truck[] {
-    return this.repository.GetAll();
-  }
-
   onSubmit(): void {
     if (this._model.id > 0){
       this.onUpdate();

@@ -14,6 +14,7 @@ export class OrdersComponent implements OnInit {
   orders!: Order[];
   selectedRouteId: number = 0;
   selectedOrderId: number = 0;
+  selectedRoute?: Route;
   @Input() onRouteSelected!: EventEmitter<Route>;
   constructor(private ordersService: OrdersService,
               private orderEditService: OrderEditServiceComponent,
@@ -25,6 +26,7 @@ export class OrdersComponent implements OnInit {
     this.onRouteSelected
       .subscribe(x => {
         this.selectedRouteId = x ? x.id : 0;
+        this.selectedRoute = x;
         this.refreshOrders();
       });
   }

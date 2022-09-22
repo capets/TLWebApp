@@ -1,5 +1,5 @@
 import {Injectable, OnInit} from "@angular/core";
-import {Service} from "../base/service";
+import {LocalService} from "../base/local-service";
 import {Route} from "../../Models/Route";
 import {RoutesRepositoryInMemory} from "../../Repositories/routes-repository-in-memory";
 
@@ -7,7 +7,7 @@ import {RoutesRepositoryInMemory} from "../../Repositories/routes-repository-in-
 @Injectable({
   providedIn: 'root'
 })
-export class RoutesService extends Service<Route> implements OnInit{
+export class RoutesService extends LocalService<Route> implements OnInit{
   constructor(private routeRepository: RoutesRepositoryInMemory) {
     super(routeRepository);
   }
@@ -15,16 +15,7 @@ export class RoutesService extends Service<Route> implements OnInit{
   ngOnInit(): void {
   }
 
-  Get(id: number | undefined): Route | undefined {
-    if (id){
-      return this.repository.Get(id);
-    }
-    return undefined;
-  }
 
-  GetAll(): Route[] {
-    return this.repository.GetAll();
-  }
 
   onSubmit(): void {
     if (this._model.id > 0){

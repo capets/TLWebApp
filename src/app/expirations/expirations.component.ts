@@ -8,13 +8,18 @@ import {ExpirationCheckService} from "../shared/Services/expirations/expiration-
   styleUrls: ['./expirations.component.scss']
 })
 export class ExpirationsComponent implements OnInit {
-  expirations!: Map<string, Expiration[]>;
+  waiting: boolean = true;
+  expirations: Map<string, Expiration[]> = new Map();
   constructor(private expirationCheckService: ExpirationCheckService) { }
 
   ngOnInit(): void {
     this.expirations = this.expirationCheckService.expirations;
+    this.expirationCheckService.loading
+      .subscribe(x => {
+        this.waiting = x;
+      });
   }
-  get groups():string[]{
+  get groups(): string[]{
     return [...this.expirations.keys()];
   }
   getTotalByGroup(group: string){

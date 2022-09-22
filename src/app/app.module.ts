@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavmenuComponent } from './navmenu/navmenu.component';
@@ -56,10 +56,11 @@ import { OrderEditServiceComponent } from './shared/Services/orders/order-edit-s
     RouteEditServiceComponent,
     RoutesAndOrdersComponent,
     OrdersComponent,
-    OrderEditServiceComponent,
+    OrderEditServiceComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     FormsModule,
     BsDatepickerModule,

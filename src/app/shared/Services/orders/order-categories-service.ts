@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Service} from "../base/service";
+import {LocalService} from "../base/local-service";
 import {CategoryBase} from "../../Models/CategoryBase";
 import {OrderCategory} from "../../Models/OrderCategory";
 import {OrderCategoriesRepositoryInMemory} from "../../Repositories/order-categories-repository-in-memory";
@@ -7,7 +7,7 @@ import {OrderCategoriesRepositoryInMemory} from "../../Repositories/order-catego
 @Injectable({
   providedIn:'root'
 })
-export class OrderCategoriesService extends Service<CategoryBase>{
+export class OrderCategoriesService extends LocalService<CategoryBase>{
   constructor(private orderCategoriesRepositoryInMemory: OrderCategoriesRepositoryInMemory) {
     super(orderCategoriesRepositoryInMemory);
   }
@@ -21,14 +21,5 @@ export class OrderCategoriesService extends Service<CategoryBase>{
     }
   }
 
-  Get(id: number | undefined): OrderCategory | undefined {
-    if (id){
-      return this.repository.Get(id);
-    }
-    return undefined;
-  }
 
-  GetAll(): OrderCategory[] {
-    return this.repository.GetAll();
-  }
 }

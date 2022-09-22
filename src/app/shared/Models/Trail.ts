@@ -1,28 +1,19 @@
 import {Vehicle} from "./Vehicle";
 import {TrailCategory} from "./TrailCategory";
+import {ITitleComponent} from "../Interfaces/ITitleComponent";
 
-export class Trail extends Vehicle{
+export class Trail extends Vehicle implements ITitleComponent{
   constructor(model?:any) {
     super(model);
     if (model){
-      this._trailCategoryId = model.trailCategoryId;
+      this.trailCategoryId = model.trailCategoryId;
     }
   }
 
-  get trailCategory(): TrailCategory | undefined {
-    return this._trailCategory;
-  }
-  set trailCategory(value: TrailCategory | undefined) {
-    this._trailCategory = value;
-  }
+  trailCategoryId!: number;
+  trailCategory!: TrailCategory | undefined;
 
-  get trailCategoryId(): number {
-    return this._trailCategoryId;
+  get Title(): string {
+    return "Trail";
   }
-  set trailCategoryId(value: number) {
-    this._trailCategoryId = value;
-  }
-
-  private _trailCategoryId!: number;
-  private _trailCategory!: TrailCategory | undefined;
 }

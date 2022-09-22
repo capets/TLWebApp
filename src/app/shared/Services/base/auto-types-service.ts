@@ -1,14 +1,14 @@
 import {Injectable} from "@angular/core";
-import {Service} from "./service";
 import {AutoType} from "../../Models/AutoType";
-import {AutoTypesRepositoryInMemory} from "../../Repositories/auto-types-repository-in-memory";
+import {RemoteService} from "./remote-service";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn:'root'
 })
-export class AutoTypesService extends Service<AutoType>{
-  constructor(private autoTypesRepository: AutoTypesRepositoryInMemory) {
-    super(autoTypesRepository);
+export class AutoTypesService extends RemoteService<AutoType>{
+  constructor(private http: HttpClient) {
+    super(AutoType,'AutoTypes', http);
   }
   onSubmit(): void {
     if (this._model.id > 0){
@@ -18,16 +18,4 @@ export class AutoTypesService extends Service<AutoType>{
       this.onAdd();
     }
   }
-  Get(id: number | undefined): AutoType | undefined {
-    if (id){
-      return this.repository.Get(id);
-    }
-    return undefined;
-  }
-
-  GetAll(): AutoType[] {
-    return this.repository.GetAll();
-  }
-
-
 }
